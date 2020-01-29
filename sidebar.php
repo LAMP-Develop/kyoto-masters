@@ -2,15 +2,6 @@
 $wp_url = get_template_directory_uri(); ?>
 
 <aside id="sidebar">
-<?php if (!is_user_logged_in()) : ?>
-<!-- <div class="inner">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9618133012525488" data-ad-slot="3757511529" data-ad-format="auto" data-full-width-responsive="false"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-</div> -->
-<?php endif; ?>
 <div class="inner">
 <h3>今週のアクセスランキング</h3>
 <ul class="popular-posts">
@@ -25,16 +16,16 @@ $comment = get_comments_number(get_the_ID());
 $excerpt = get_the_excerpt();
 $img = '';
 if (has_post_thumbnail()) {
-    $img = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
+$img = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
 } else {
-    $img = $wp_url.'/lib/images/no-img.png';
+$img = $wp_url.'/lib/images/no-img.png';
 }
 ?>
 <li>
 <a href="<?php echo $permalink; ?>">
+<span>0<?php echo $no; ?></span>
 <img src="<?php echo $img; ?>" alt="<?php echo $ttl; ?>">
 <div class="txt">
-<p class="color-sky"><span>No.<?php echo $no; ?></span><span></span></p>
 <h4><?php echo $ttl; ?></h4>
 </div>
 </a>
@@ -50,13 +41,13 @@ wp_reset_query();
 $category = get_the_category();
 $cat_id  = $category[0]->cat_ID;
 if (get_ancestors($cat_id, 'category')) {
-    $cat_id = get_ancestors($cat_id, 'category');
-    $category = get_category($cat_id);
-    $cat_name = $category->cat_name;
-    $cat_slug = $category->category_nicename;
+$cat_id = get_ancestors($cat_id, 'category');
+$category = get_category($cat_id);
+$cat_name = $category->cat_name;
+$cat_slug = $category->category_nicename;
 } else {
-    $cat_name = $category[0]->cat_name;
-    $cat_slug = $category[0]->category_nicename;
+$cat_name = $category[0]->cat_name;
+$cat_slug = $category[0]->category_nicename;
 }
 $cat_child = get_term_children($cat_id, 'category');
 if (count($cat_child) != 0):
@@ -89,8 +80,24 @@ foreach ($tags_array as $key => $tag):
 $tag_name = $tag->name;
 $tag_slug = $tag->slug;
 ?>
-<li><a href="<?php echo $home.'/tag/'.$tag_slug; ?>"><?php echo $tag_name; ?></a></li>
+<li><a href="<?php echo $home.'/tag/'.$tag_slug; ?>"><i class="fas fa-tag"></i> <?php echo $tag_name; ?></a></li>
 <?php endforeach; ?>
+</ul>
+</div>
+<!-- sns -->
+<div class="inner">
+<h3>収納ラボをフォロー</h3>
+<ul class="followBox">
+<li class="mb-1"><a href="https://www.facebook.com/shunolabo/" target="_blank">
+<i class="fab fa-facebook"></i>Facebookをフォロー</a></li>
+<li class="mb-1"><a href="https://twitter.com/shuno_labo" target="_blank">
+<i class="fab fa-twitter"></i>Twitterをフォロー</a></li>
+<li class="mb-1"><a href="https://www.instagram.com/shunolabo/" target="_blank">
+<i class="fab fa-instagram"></i>Instagramをフォロー</a></li>
+<li class="mb-1"><a href="https://www.pinterest.jp/pin/find/?description=&media=&url=https%3A%2F%2Fwww.estorage.co.jp%2F" target="_blank">
+<i class="fab fa-pinterest"></i>Pinterestをフォロー</a></li>
+<li><a href="https://roomclip.jp/myroom/3117274" target="_blank">
+<img src="<?php echo $wp_url; ?>/lib/images/sns/room_clip.png" width="20" height="20" alt="RoomClip">RoomClipをフォロー</a></li>
 </ul>
 </div>
 </aside>

@@ -1,0 +1,20 @@
+@mixin media-xlg() {
+  @media (max-width: ($breakpoint-xlg)) {
+    @content;
+  }
+}
+@mixin media-lg() {
+  @media (max-width: ($breakpoint-lg)) {
+    @content;
+  }
+}
+@mixin media-md() {
+  @media (max-width: ($breakpoint-md)) {
+    @content;
+  }
+}
+@mixin media-sm() {
+  @media (max-width: ($breakpoint-sm)) {
+    @content;
+  }
+}

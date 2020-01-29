@@ -1,0 +1,9 @@
+$length: 5;
+
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @each $size, $length in $spacers {
+    .#{$abbrev}-#{$size} {
+      #{$prop}: $length;
+    }
+  }
+}

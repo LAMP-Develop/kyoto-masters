@@ -1,7 +1,7 @@
 body {
   font-family: 'Roboto Condensed', 'Noto Sans JP', 'Yu Gothic Medium', '游ゴシック Medium', YuGothic, '游ゴシック体', 'ヒラギノ角ゴ Pro W3', 'メイリオ', sans-serif;
   font-size: 100%;
-  color: #535353;
+  color: #3E3A39;
   box-sizing: border-box
 }
 
@@ -198,17 +198,46 @@ body {
 }
 
 .btn {
+  position: relative;
   display: inline-block;
   box-sizing: border-box;
   min-width: 240px;
   height: auto;
   line-height: 1;
   font-size: 1rem;
-  color: #5fcbfd;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  background:
+    linear-gradient(135deg, transparent 10px, #3E3A39 0) top left,
+    linear-gradient(225deg, transparent 0, #3E3A39 0) top right,
+    linear-gradient(315deg, transparent 10px, #3E3A39 0) bottom right,
+    linear-gradient(45deg, transparent 0, #3E3A39 0) bottom left;
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.btn-2 {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 1;
+  font-size: .9rem;
+  color: #fff;
   border-radius: 30px;
-  border: solid 1px #5fcbfd;
+  border: solid 1px #fff;
   padding: 20px 0;
   text-align: center
+}
+
+.btn-3 {
+  color: #fff;
+  border: solid 1px #fff
+}
+
+.btn-3:hover {
+  background-color: #fff;
+  color: #3E3A39
 }
 
 .aligncenter {
@@ -216,14 +245,29 @@ body {
   margin: 2rem auto
 }
 
-img {
+.wp-video {
+  width: 100% !important
+}
+
+img, .aligncenter {
   display: block;
+  margin: 1rem auto 2rem auto
+}
+
+img {
   margin: 2rem auto;
   transition: .3s
 }
 
 a:hover img {
   opacity: .8
+}
+
+.post-btn {
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  margin: 1rem auto 2rem auto
 }
 
 .post-btn a {
@@ -233,15 +277,15 @@ a:hover img {
   height: auto;
   line-height: 1;
   font-size: 1rem;
-  color: #5fcbfd;
+  color: #3E3A39;
   border-radius: 30px;
-  border: solid 1px #5fcbfd;
-  padding: 20px 0;
+  border: solid 1px #3E3A39;
+  padding: 1.2rem 3rem;
   text-align: center
 }
 
 .post-btn a:hover {
-  background-color: #5fcbfd;
+  background-color: #3E3A39;
   color: #fff;
   text-decoration: none
 }
@@ -253,7 +297,7 @@ a:hover img {
   left: -2px;
   display: inline-block;
   box-sizing: border-box;
-  background-color: #5fcbfd;
+  background-color: #3E3A39;
   color: #fff;
   margin: 0;
   line-height: 1;
@@ -267,8 +311,16 @@ a:hover img {
   margin: 2rem auto;
   box-sizing: border-box;
   padding: 1rem;
-  border: solid 2px #5fcbfd;
+  border: solid 2px #3E3A39;
   font-size: .9rem
+}
+
+.border-gray {
+  position: relative;
+  margin: 2rem auto;
+  box-sizing: border-box;
+  padding: 1rem;
+  border: solid 2px #eee
 }
 
 p {
@@ -299,27 +351,19 @@ p a:hover {
 h2 {
   position: relative;
   font-size: 1.5rem;
-  padding-bottom: .8rem;
+  box-sizing: border-box;
+  padding: .8rem;
+  background-color: #F2F2F3;
+  border-left: solid 3px #3E3A39;
   margin: 2rem auto 1.5rem auto;
-  border-bottom: solid 3px #eee
-}
-
-h2:after {
-  z-index: 1;
-  position: absolute;
-  content: '';
-  display: block;
-  border-bottom: solid 3px #5fcbfd;
-  bottom: -3px;
-  width: 20%
 }
 
 h3 {
   font-size: 1.1rem;
   margin: 2rem auto 1rem auto;
+  padding-bottom: .5rem;
+  border-bottom: solid 1px #3E3A39;
   box-sizing: border-box;
-  padding-left: 1rem;
-  border-left: solid 3px #5fcbfd;
   background-color: #fff
 }
 
@@ -380,7 +424,7 @@ ol li:before {
   content: counter(item)'.';
   padding-right: .5em;
   font-weight: bold;
-  color: #5fcbfd
+  color: #3E3A39
 }
 
 ul li:last-child, ol li:last-child {
@@ -397,6 +441,13 @@ table td {
   box-sizing: border-box;
   padding: .5rem 1rem;
   font-size: .9rem
+}
+
+iframe {
+  max-width: 100%;
+  border: 0;
+  display: block;
+  margin: 0 auto
 }
 
 .wp-embedded-content {
@@ -439,66 +490,4 @@ blockquote:not(.wp-embedded-content) p {
 
 blockquote:not(.wp-embedded-content) p:last-of-type {
   margin-bottom: 0
-}
-
-.border-gray {
-  position: relative;
-  margin: 2rem auto;
-  box-sizing: border-box;
-  padding: 1rem;
-  border: solid 2px #eee
-}
-
-.cta-faq {
-  position: relative;
-  box-sizing: border-box;
-  padding: 2rem;
-  margin-top: 3rem;
-  border-top: solid 2px #5fcbfd;
-  border-bottom: solid 2px #5fcbfd
-}
-
-.cta-faq h2 {
-  font-size: 1rem;
-  font-weight: normal;
-  letter-spacing: .2rem;
-  padding-bottom: 0;
-  margin: 0 auto 1rem auto;
-  border-bottom: 0
-}
-
-.cta-faq h2:after {
-  content: none
-}
-
-.cta-faq h3 {
-  font-size: 1.4rem;
-  letter-spacing: .2rem;
-  font-weight: normal;
-  margin: 0 auto 2rem auto;
-  background-color: #5fcbfd;
-  background-image: none;
-  color: #fff;
-  border-radius: 100px
-}
-
-@media(max-width:768px) {
-  .cta-faq {
-    padding: 2rem 0
-  }
-
-  .cta-faq h2 {
-    font-size: .8rem;
-    font-weight: normal;
-    letter-spacing: normal
-  }
-
-  .cta-faq h3 {
-    font-size: 1rem;
-    letter-spacing: normal
-  }
-
-  .cta-faq p {
-    text-align: left
-  }
 }

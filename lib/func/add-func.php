@@ -1,11 +1,4 @@
 <?php
-// スマホ判定
-function is_mobile()
-{
-    $useragents = array('iPhone','iPod','Android','dream','CUPCAKE','blackberry9500','blackberry9530','blackberry9520','blackberry9550','blackberry9800','webOS','incognito','webmate');
-    $pattern = '/'.implode('|', $useragents).'/i';
-    return preg_match($pattern, $_SERVER['HTTP_USER_AGENT']);
-}
 
 // 記事一覧アイキャッチ表示
 function customize_manage_posts_columns($columns)
@@ -26,62 +19,6 @@ function customize_manage_posts_custom_column($column_name, $post_id)
 }
 add_action('manage_posts_custom_column', 'customize_manage_posts_custom_column', 10, 2);
 
-// 人気記事出力用
-function getPostViews($postID)
-{
-    $count_key = 'post_views_count';
-    $count = get_post_meta($postID, $count_key, true);
-    if ($count == '') {
-        delete_post_meta($postID, $count_key);
-        add_post_meta($postID, $count_key, '0');
-        return '0';
-    }
-    return $count;
-}
-function setPostViews($postID)
-{
-    $count_key = 'post_views_count';
-    $count = get_post_meta($postID, $count_key, true);
-    if ($count=='') {
-        $count = 0;
-        delete_post_meta($postID, $count_key);
-        add_post_meta($postID, $count_key, '0');
-    } else {
-        $count++;
-        update_post_meta($postID, $count_key, $count);
-    }
-}
-remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
-
-// エディタースタイル
-if (!function_exists('initialize_tinymce_styles')) {
-    function initialize_tinymce_styles($init_array)
-    {
-        $style_formats = array(
-          array(
-            'title' => 'ボタン',
-            'inline' => 'span',
-            'classes' => 'post-btn',
-          ),
-          array(
-            'title' => 'ポイント',
-            'block' => 'p',
-            'classes' => 'point',
-          ),
-          array(
-            'title' => '囲み（グレー）',
-            'block' => 'p',
-            'classes' => 'border-gray',
-          ),
-        );
-        $init_array['style_formats'] = json_encode($style_formats);
-        $init_array['table_resize_bars'] = false;
-        $init_array['object_resizing'] = 'img';
-
-        return $init_array;
-    }
-}
-add_filter('tiny_mce_before_init', 'initialize_tinymce_styles', 10000);
 
 function extend_tiny_mce_before_init($mce_init)
 {
@@ -125,37 +62,6 @@ function get_the_custom_excerpt($content, $length)
     return $content;
 }
 
-// 検索結果カテゴリ除外
-function SearchExcludeCategoryFilter($query)
-{
-    if ($query->is_search) {
-        $query->set('cat', '-549');
-    }
-    return $query;
-}
-add_filter('pre_get_posts', 'SearchExcludeCategoryFilter');
-
-function custom_should_index_post($should_index, WP_Post $post)
-{
-    $categories_to_exclude = array(549);
-    if (false === $should_index) {
-        return $should_index;
-    }
-
-    if ($post->post_type !== 'page') {
-        return $should_index;
-    }
-
-
-    $post_category_ids = wp_get_post_categories($post->ID);
-    $remaining_category_ids = array_diff($post_category_ids, $categories_to_exclude);
-    if (count($remaining_category_ids) === 0) {
-        return false;
-    }
-    return $should_index;
-}
-add_filter('algolia_should_index_post', 'custom_should_index_post', 10, 2);
-add_filter('algolia_should_index_searchable_post', 'custom_should_index_post', 10, 2);
 
 // ブログカード
 function nlink_scode($atts)
@@ -183,29 +89,6 @@ function nlink_scode($atts)
     return $nlink;
 }
 add_shortcode('nlink', 'nlink_scode');
-
-function add_add_shortcode_button_plugin($plugin_array)
-{
-    $plugin_array[ 'example_shortcode_button_plugin' ] = get_template_directory_uri().'/lib/js/editor-button.js';
-    return $plugin_array;
-}
-add_filter('mce_external_plugins', 'add_add_shortcode_button_plugin');
-
-function add_shortcode_button($buttons)
-{
-    $buttons[] = 'nlink';
-    return $buttons;
-}
-add_filter('mce_buttons', 'add_shortcode_button');
-
-// テーブルのスタイルを消す
-function customize_tinymce_settings($mceInit)
-{
-    $mceInit['table_resize_bars'] = false;
-    $mceInit['object_resizing'] = "img";
-    return $mceInit;
-}
-add_filter('tiny_mce_before_init', 'customize_tinymce_settings', 0);
 
 //popular post からquery_posts生成
 function get_popular_args($range= "weekly", $limit = 5)

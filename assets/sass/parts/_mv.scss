@@ -1,0 +1,102 @@
+#mv {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: $dark;
+  // background-image: url('../images/bg_mv.jpg');
+  // background-position: center center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  height: 350px;
+
+  .inner {
+    box-sizing: border-box;
+    padding-left: 40%;
+    @include media-lg() {
+      padding-left: 0;
+    }
+
+    h2 {
+      line-height: 1;
+      letter-spacing: $font-size-base*0.2;
+      font-size: $font-size-base*1.8;
+      margin: 0 auto $font-size-base*2;
+      @include media-lg() {
+        text-align: center;
+        font-size: $font-size-base*1.2;
+        margin: 0 auto $font-size-base*2;
+      }
+    }
+  }
+}
+
+#searchform {
+  input {
+    display: inline-block;
+    vertical-align: middle;
+    width: 300px;
+    box-sizing: border-box;
+    font-size: $font-size-base*1.2;
+    line-height: 1;
+    border: 0;
+    border-radius: 0;
+    padding: $font-size-base*0.8 $font-size-base*1.6;
+    @include media-lg() {
+      width: 80%;
+      font-size: $font-size-base;
+    }
+    @include media-sm() {
+      width: 75%;
+    }
+  }
+
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: $font-size-base;
+    box-sizing: border-box;
+    padding: $font-size-lg;
+    @include media-md() {
+      padding: $font-size-base - 2;
+    }
+
+    i {
+      font-size: $font-size-base*1.6;
+      @include media-md() {
+        font-size: $font-size-base*1.4;
+      }
+    }
+  }
+}
+
+.hot-word {
+  display: inline-block;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: $font-size-base*0.3 $font-size-base*0.8;
+  margin-left: $font-size-base*0.8;
+  margin-bottom: $font-size-base*0.8;
+  line-height: 1;
+  font-size: $font-size-base*0.8;
+  color: #535353;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+.search-tag {
+  span {
+    @include media-lg() {
+      display: block;
+      margin: 0 auto $font-size-base;
+    }
+
+    .hot-word {
+      @include media-lg() {
+        margin-left: 0;
+        margin-right: $font-size-base*0.8;
+      }
+    }
+  }
+}

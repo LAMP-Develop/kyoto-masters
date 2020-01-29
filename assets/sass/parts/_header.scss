@@ -1,0 +1,154 @@
+header {
+  position: relative;
+  box-sizing: border-box;
+  padding: 20px 0;
+  background-color: #fff;
+
+  h1 {
+    line-height: 1;
+    box-sizing: border-box;
+    margin: 0;
+    @include media-md() {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+      text-align: left !important;
+    }
+
+    img {
+      width: 287px;
+      height: auto;
+      @include media-md() {
+        width: auto;
+        height: 38px;
+      }
+    }
+  }
+
+  #searchform {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5%;
+    @include media-md() {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+      text-align: left !important;
+      margin-top: 1.3rem;
+    }
+
+    #s {
+      background-color: $gray-2;
+    }
+  }
+}
+
+#search-sbmit {
+  cursor: pointer;
+}
+
+.head-sns ul li {
+  display: inline-block;
+  vertical-align: middle;
+
+  &:last-child {
+    font-size: 0;
+
+    a {
+      font-size: 0;
+    }
+  }
+
+  a {
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+}
+
+.drawer--right {
+  .drawer-nav {
+    z-index: 998;
+    right: -20rem;
+  }
+  &.drawer-open {
+    .drawer-hamburger {
+      background-color: transparent;
+      right: 0;
+    }
+  }
+}
+
+.drawer-hamburger {
+  padding: 28px 20px 37px;
+  z-index: 999;
+  background-color: #fff;
+
+  &:hover {
+    background-color: #fff;
+  }
+}
+
+.drawer-nav {
+  width: 20rem;
+}
+
+.drawer-hamburger-icon {
+  background-color: #3E3A39;
+
+  &:after,
+  &:before {
+    background-color: #3E3A39;
+  }
+}
+
+.drawer-open {
+  .drawer-hamburger-icon {
+    @include media-md() {
+      box-shadow: none !important;
+    }
+    &:after,
+    &:before {
+      background-color: #fff;
+      box-shadow: none !important;
+    }
+  }
+}
+
+.drawer-menu {
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.drawer-menu-item {
+  text-align: left;
+  padding: 0;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+a.drawer-menu-item {
+  font-size: 0.8rem;
+}
+
+.cat-link {
+  a.drawer-menu-item {
+    font-size: 1rem;
+  }
+}
+
+.drawer-menu {
+  .cat-link {
+    a {
+      img {
+        display: inline-block;
+        width: 20px;
+        height: auto;
+        margin-right: 0.8rem;
+      }
+    }
+  }
+}
+
+.nav-sns a {
+  font-size: 2rem;
+}
