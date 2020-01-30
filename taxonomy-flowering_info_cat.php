@@ -7,23 +7,10 @@ get_header();
 <div class="wrap main-wrap">
 <section id="main-content">
 <?php
-$taxonomy_slug = get_query_var('flowering_cat');
-$taxonomy_var = get_taxonomy($taxonomy_slug);
+$queried_object = get_queried_object();
+$term_name = $queried_object->name;
 ?>
-<h2 class="ttlcat">開花情報：<?php echo $taxonomy_var->label; ?></h2>
-<?php
-$terms = get_terms('flowering_cat');
-if (count($terms) != 0): ?>
-<ul class="cat-child mb-2">
-<?php foreach ($terms as $key => $cat_childs):
-$cat = get_category($cat_childs);
-$name = $cat->cat_name;
-$slug = $cat->category_nicename;
-?>
-<li class="d-i-block mb-05 mr-05"><a href="<?php echo $home.'/'.$cat_slug.'/'.$slug; ?>" class="bg-sky color-white"><?php echo $name; ?></a></li>
-<?php endforeach; ?>
-</ul>
-<?php endif; ?>
+<h2 class="ttlcat">京都・<?php echo $term_name; ?>の名所 開花情報</h2>
 <ul class="post-list">
 <?php
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;

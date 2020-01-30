@@ -15,7 +15,7 @@ $categories = get_categories($args);
 foreach ($categories as $category): ?>
 <li><a href="<?php echo get_category_link($category->term_id); ?>"><?php echo $category->name; ?></a></li>
 <?php endforeach; ?>
-<li><a href="#">開花情報</a></li>
+<li><a href="<?php echo $home; ?>/flowering-info/">開花情報</a></li>
 </ul>
 </div>
 </nav>

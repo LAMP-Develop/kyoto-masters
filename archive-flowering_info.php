@@ -8,18 +8,8 @@ get_header();
 <section id="main-content">
 <h2 class="ttlcat">すべての開花情報</h2>
 <?php
-$terms = get_terms('flowering_cat');
-if (count($terms) != 0): ?>
-<ul class="cat-child mb-2">
-<?php foreach ($terms as $key => $cat_childs):
-$cat = get_category($cat_childs);
-$name = $cat->cat_name;
-$slug = $cat->category_nicename;
+$terms = get_terms('flowering_info_cat');
 ?>
-<li class="d-i-block mb-05 mr-05"><a href="<?php echo $home.'/'.$cat_slug.'/'.$slug; ?>" class="bg-sky color-white"><?php echo $name; ?></a></li>
-<?php endforeach; ?>
-</ul>
-<?php endif; ?>
 <ul class="post-list">
 <?php
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
