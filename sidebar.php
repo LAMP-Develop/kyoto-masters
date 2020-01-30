@@ -1,9 +1,28 @@
-<?php $home = esc_url(home_url());
-$wp_url = get_template_directory_uri(); ?>
+<?php
+$home = esc_url(home_url());
+$wp_url = get_template_directory_uri();
+$lang = ICL_LANGUAGE_CODE;
+if ($lang === 'en') {
+    $rank = 'Access Ranking';
+    $key = 'Hot keywords';
+} elseif ($lang === 'ko') {
+    $rank = '액세스 랭킹';
+    $key = '화제의 키워드';
+} elseif ($lang === 'zh-hans') {
+    $rank = '访问排名';
+    $key = '热门关键字';
+} elseif ($lang === 'zh-hant') {
+    $rank = '訪問排名';
+    $key = '熱門關鍵字';
+} else {
+    $rank = '今週のアクセスランキング';
+    $key = '話題のキーワード';
+}
+?>
 
 <aside id="sidebar">
 <div class="inner">
-<h3>今週のアクセスランキング</h3>
+<h3><?php echo $rank; ?></h3>
 <ul class="popular-posts">
 <?php
 $args = get_popular_args('weekly', '5');
@@ -63,7 +82,7 @@ $tag_slug = $cats_arry->slug;
 </div>
 <?php endif; endif; ?>
 <div class="inner">
-<h3>話題のキーワード</h3>
+<h3><?php echo $key; ?></h3>
 <ul class="tag-list">
 <?php
 $args = [

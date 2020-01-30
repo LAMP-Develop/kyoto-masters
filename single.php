@@ -2,6 +2,15 @@
 $home = esc_url(home_url());
 $wp_url = get_template_directory_uri();
 get_header();
+
+$lang = ICL_LANGUAGE_CODE;
+if ($lang === 'en') {
+} elseif ($lang === 'ko') {
+} elseif ($lang === 'zh-hans') {
+} elseif ($lang === 'zh-hant') {
+} else {
+}
+
 if (have_posts()): the_post();
 
 // 記事情報
