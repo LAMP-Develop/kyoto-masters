@@ -52,30 +52,54 @@ $tags = get_the_tags();
 <!-- 施設概要 -->
 <table>
 <tbody>
+<?php if(get_field('build-name')): ?>
 <tr><th>施設名</th>
 <td><?php the_field('build-name'); ?></td></tr>
+<?php endif; ?>
+<?php if(get_field('address')): ?>
 <tr><th>住所</th>
 <td><?php the_field('address'); ?></td></tr>
+<?php endif; ?>
+<?php if(get_field('tell')): ?>
 <tr><th>電話番号</th>
 <td><?php the_field('tell'); ?></td></tr>
+<?php endif; ?>
+<?php if(get_field('station')): ?>
 <tr><th>最寄り駅</th>
 <td><?php the_field('station'); ?></td></tr>
+<?php endif; ?>
+<?php if(get_field('url')): ?>
 <tr><th>URL</th>
 <td><?php the_field('url'); ?></td></tr>
+<?php endif; ?>
+<?php if(get_field('bas')): ?>
 <tr><th>最寄りバス停</th>
 <td><?php the_field('bas'); ?></td></tr>
+<?php endif; ?>
+<?php if(get_field('time')): ?>
 <tr><th>営業時間</th>
 <td><?php the_field('time'); ?></td></tr>
+<?php endif; ?>
+<?php if(get_field('holiday')): ?>
 <tr><th>定休日</th>
 <td><?php the_field('holiday'); ?></td></tr>
+<?php endif; ?>
+<?php if(get_field('money')): ?>
 <tr><th>入場料</th>
 <td><?php the_field('money'); ?></td></tr>
+<?php endif; ?>
+<?php if(get_field('other')): ?>
 <tr><th>備考</th>
 <td><?php the_field('other'); ?></td></tr>
-<tr><th>座標</th>
-<td><?php the_field('geocode'); ?></td></tr>
+<?php endif; ?>
 </tbody>
 </table>
+
+<?php if (get_field('geocode')): ?>
+<div class="gmap">
+<iframe src="https://www.google.com/maps?q=<?php echo get_field('geocode'); ?>&hl=jp&output=embed"></iframe>
+</div>
+<?php endif; ?>
 
 </div>
 
@@ -121,16 +145,15 @@ $catkwds = [];
 foreach ($category as $cat) {
     $catkwds[] = $cat->term_id;
 }
-$args = array(
+$args = [
   'post_type' => 'post',
   'posts_per_page' => '4',
-  'cat' => '-549',
-  'post__not_in' =>array($id),
+  'post__not_in' => [$id],
   'category__in' => $catkwds,
   'orderby' => 'rand',
-);
-$my_query = new WP_Query($args);
-while ($my_query->have_posts()) : $my_query->the_post();
+];
+$posts = get_posts($args);
+foreach ($posts as $post): setup_postdata($post);
 $p = get_the_permalink();
 $t = get_the_title();
 $time = get_the_time('Y-m-d');
@@ -154,7 +177,7 @@ $category = get_the_category();
 </div>
 </a>
 </li>
-<?php endwhile; wp_reset_postdata(); ?>
+<?php endforeach; wp_reset_postdata(); ?>
 </ul>
 </section>
 </article>

@@ -244,3 +244,13 @@
     }
   }
 }
+
+.gmap {
+  iframe {
+    display: block;
+    border: 0;
+    width: 100%;
+    height: 300px;
+    margin-top: $font-size-base*1.5;
+  }
+}
