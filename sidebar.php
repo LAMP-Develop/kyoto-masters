@@ -7,9 +7,9 @@ $wp_url = get_template_directory_uri(); ?>
 <ul class="popular-posts">
 <?php
 $args = get_popular_args('weekly', '5');
-$posts = get_posts($args);
+query_posts($args);
+while (have_posts()): the_post();
 $no = 1;
-foreach ($posts as $post):
 $ttl = get_the_title();
 $permalink = get_the_permalink();
 $comment = get_comments_number(get_the_ID());
@@ -30,11 +30,7 @@ $img = $wp_url.'/lib/images/no-img.png';
 </div>
 </a>
 </li>
-<?php
-$no++;
-endforeach;
-wp_reset_query();
-?>
+<?php $no++; endwhile; wp_reset_query(); ?>
 </ul>
 </div>
 <?php if (is_single()):
@@ -70,11 +66,11 @@ $tag_slug = $cats_arry->slug;
 <h3>話題のキーワード</h3>
 <ul class="tag-list">
 <?php
-$args = array(
+$args = [
   'orderby' => 'count',
   'order' => 'DESC',
   'number' => 10,
-);
+];
 $tags_array = get_tags($args);
 foreach ($tags_array as $key => $tag):
 $tag_name = $tag->name;

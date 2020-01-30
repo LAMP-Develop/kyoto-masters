@@ -28,8 +28,8 @@ $args = [
   'orderby' => 'date',
   'order' => 'DESC'
 ];
-$posts = get_posts($args);
-foreach ($posts as $post): setup_postdata($post);
+query_posts($args);
+while (have_posts()): the_post();
 $p = get_the_permalink();
 $t = get_the_title();
 $time = get_the_time('Y-m-d');
@@ -56,7 +56,7 @@ $category = get_the_category();
 </div>
 </a>
 </li>
-<?php endforeach; wp_reset_postdata(); ?>
+<?php endwhile; wp_reset_query(); ?>
 </ul>
 <div class="txt-c">
 <a href="<?php echo $home; ?>/new-post/" class="btn">一覧を見る</a>
@@ -70,9 +70,9 @@ $category = get_the_category();
 <ul class="post-list ranking-list">
 <?php
 $args = get_popular_args('weekly', '4');
-$posts = get_posts($args);
+query_posts($args);
+while (have_posts()): the_post();
 $no = 1;
-foreach ($posts as $post):
 $p = get_the_permalink();
 $t = get_the_title();
 $time = get_the_time('Y-m-d');
@@ -100,7 +100,7 @@ $category = get_the_category();
 </div>
 </a>
 </li>
-<?php $no++; endforeach; wp_reset_query(); ?>
+<?php $no++; endwhile; wp_reset_query(); ?>
 </ul>
 </div>
 </section>

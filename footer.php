@@ -14,8 +14,8 @@ $wp_url = get_template_directory_uri(); ?>
 </h2>
 <ul class="txt-c foot-link">
 <li class="d-i-block"><a href="<?php echo $home; ?>/">トップ</a></li>
-<li class="d-i-block"><a href="https://www.estorage.co.jp/?utm_source=shunomagazine&utm_medium=owned&utm_campaign=shunomagazine_owned" target="_blank">運営会社</a></li>
-<li class="d-i-block"><a href="<?php echo $home; ?>/site-map/">サイトマップ</a></li>
+<li class="d-i-block"><a href="https://lamp.jp" target="_blank">運営会社</a></li>
+<!-- <li class="d-i-block"><a href="<?php echo $home; ?>/site-map/">サイトマップ</a></li> -->
 <li class="d-i-block"><a href="<?php echo $home; ?>/privacy-policy/">プライバシーポリシー</a></li>
 </ul>
 <p class="m-0 txt-c">

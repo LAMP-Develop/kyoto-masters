@@ -69,13 +69,8 @@ foreach ($categories as $kye => $category) { ?>
 <?php } ?>
 <li class="drawer-menu-item mt-2"><a class="drawer-menu-item" href="<?php echo $home; ?>/">トップ</a></li>
 <li class="drawer-menu-item"><a class="drawer-menu-item" href="https://lamp.jp" target="_blank">運営会社</a></li>
-<li class="drawer-menu-item"><a class="drawer-menu-item" href="<?php echo $home; ?>/site-map/">サイトマップ</a></li>
+<!-- <li class="drawer-menu-item"><a class="drawer-menu-item" href="<?php echo $home; ?>/site-map/">サイトマップ</a></li> -->
 <li class="drawer-menu-item"><a class="drawer-menu-item" href="<?php echo $home; ?>/privacy-policy/">プライバシーポリシー</a></li>
-<!-- <li class="mt-2"><ul class="nav-sns txt-c color-white mb-1">
-<li class="mr-1 d-i-block"><a href="https://www.facebook.com/shunolabo/" target="_blank"><i class="fab fa-facebook"></i></a></li>
-<li class="mr-1 d-i-block"><a href="https://www.instagram.com/shunolabo/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-<li class="d-i-block"><a href="https://www.pinterest.jp/pin/find/?description=&media=&url=https%3A%2F%2Fwww.estorage.co.jp%2F" target="_blank"><i class="fab fa-pinterest"></i></a></li>
-</ul></li> -->
 </ul>
 </nav>
 </div>
