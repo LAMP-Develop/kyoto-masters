@@ -40,7 +40,7 @@ $languages = icl_get_languages('skip_missing=0&orderby=id&order=desc&link_empty_
 <ul class="dropdwn-menu">
 <?php foreach ($languages as $key => $val): ?>
 <li>
-<a href="<?php echo $val['url']; ?>"><img src="<?php echo $val['country_flag_url']; ?>" alt="<?php echo $val['native_name']; ?>"><?php echo $val['native_name']; ?></a>
+<a href="<?php echo $val['url']; ?>"><img class="mr-05" src="<?php echo $val['country_flag_url']; ?>" alt="<?php echo $val['native_name']; ?>"><?php echo $val['native_name']; ?></a>
 </li>
 <?php endforeach; ?>
 </ul>
@@ -71,6 +71,12 @@ foreach ($categories as $kye => $category) { ?>
 <li class="drawer-menu-item"><a class="drawer-menu-item" href="https://lamp.jp" target="_blank">運営会社</a></li>
 <!-- <li class="drawer-menu-item"><a class="drawer-menu-item" href="<?php echo $home; ?>/site-map/">サイトマップ</a></li> -->
 <li class="drawer-menu-item"><a class="drawer-menu-item" href="<?php echo $home; ?>/privacy-policy/">プライバシーポリシー</a></li>
+<hr class="mb-2">
+<?php foreach ($languages as $key => $val): ?>
+<li class="drawer-menu-item">
+<a class="drawer-menu-item" href="<?php echo $val['url']; ?>"><img class="mr-05" src="<?php echo $val['country_flag_url']; ?>" alt="<?php echo $val['native_name']; ?>"><?php echo $val['native_name']; ?></a>
+</li>
+<?php endforeach; ?>
 </ul>
 </nav>
 </div>
