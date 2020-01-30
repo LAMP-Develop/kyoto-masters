@@ -84,20 +84,4 @@ $tag_slug = $tag->slug;
 <?php endforeach; ?>
 </ul>
 </div>
-<!-- sns -->
-<div class="inner">
-<h3>収納ラボをフォロー</h3>
-<ul class="followBox">
-<li class="mb-1"><a href="https://www.facebook.com/shunolabo/" target="_blank">
-<i class="fab fa-facebook"></i>Facebookをフォロー</a></li>
-<li class="mb-1"><a href="https://twitter.com/shuno_labo" target="_blank">
-<i class="fab fa-twitter"></i>Twitterをフォロー</a></li>
-<li class="mb-1"><a href="https://www.instagram.com/shunolabo/" target="_blank">
-<i class="fab fa-instagram"></i>Instagramをフォロー</a></li>
-<li class="mb-1"><a href="https://www.pinterest.jp/pin/find/?description=&media=&url=https%3A%2F%2Fwww.estorage.co.jp%2F" target="_blank">
-<i class="fab fa-pinterest"></i>Pinterestをフォロー</a></li>
-<li><a href="https://roomclip.jp/myroom/3117274" target="_blank">
-<img src="<?php echo $wp_url; ?>/lib/images/sns/room_clip.png" width="20" height="20" alt="RoomClip">RoomClipをフォロー</a></li>
-</ul>
-</div>
 </aside>

@@ -1,5 +1,10 @@
+/* slick */
+@import "~slick-carousel/slick/slick.scss";
+@import "~slick-carousel/slick/slick-theme.scss";
+
+/* main */
 @import "variables";
 @import "mixin";
 @import "reset";
-@import "parts";
 @import "old";
+@import "parts";

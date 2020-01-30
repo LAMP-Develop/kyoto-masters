@@ -14,7 +14,7 @@ if (has_post_thumbnail()) {
     $i_l = get_the_post_thumbnail_url(get_the_ID(), 'full');
 } else {
     $i = $wp_url.'/lib/images/no-img.png';
-    $i_l = $wp_url.'/lib/images/no-img-2.png';
+    $i_l = $wp_url.'/lib/images/no-img.png';
 }
 // カテゴリー
 $category = get_the_category();
@@ -34,9 +34,51 @@ $tags = get_the_tags();
 <div class="i-catch">
 <img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x,<?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
 </div>
+
+<!-- メインコンテンツ -->
 <div class="post-inner mb-3">
-<?php the_content(); ?>
+<?php for ($i=1; $i <= 5; $i++): ?>
+<?php if (get_field('h_0'.$i)): ?>
+<h2><?php echo get_field('h_0'.$i); ?></h2>
+<?php if (get_field('img_0'.$i)): ?>
+<img src="<?php echo get_field('img_0'.$i); ?>" alt="<?php echo get_field('h_0'.$i); ?>">
+<?php endif; ?>
+<?php if (get_field('body_0'.$i)): ?>
+<p><?php echo get_field('body_0'.$i); ?></p>
+<?php endif; ?>
+<?php endif; ?>
+<?php endfor; ?>
+
+<!-- 施設概要 -->
+<table>
+<tbody>
+<tr><th>施設名</th>
+<td><?php the_field('build-name'); ?></td></tr>
+<tr><th>住所</th>
+<td><?php the_field('address'); ?></td></tr>
+<tr><th>電話番号</th>
+<td><?php the_field('tell'); ?></td></tr>
+<tr><th>最寄り駅</th>
+<td><?php the_field('station'); ?></td></tr>
+<tr><th>URL</th>
+<td><?php the_field('url'); ?></td></tr>
+<tr><th>最寄りバス停</th>
+<td><?php the_field('bas'); ?></td></tr>
+<tr><th>営業時間</th>
+<td><?php the_field('time'); ?></td></tr>
+<tr><th>定休日</th>
+<td><?php the_field('holiday'); ?></td></tr>
+<tr><th>入場料</th>
+<td><?php the_field('money'); ?></td></tr>
+<tr><th>備考</th>
+<td><?php the_field('other'); ?></td></tr>
+<tr><th>座標</th>
+<td><?php the_field('geocode'); ?></td></tr>
+</tbody>
+</table>
+
 </div>
+
 <?php if ($tags != ''): ?>
 <div class="single-tags">
 <h3>この記事のタグ</h3>
@@ -55,22 +97,12 @@ $tags = get_the_tags();
 <ul class="txt-c">
 <li class="fb">
 <a href="https://www.facebook.com/sharer.php?src=bm&u=<?php echo $p; ?>&t=<?php echo $t; ?>" target="_blank">
-<img src="<?php echo $wp_url; ?>/lib/images/sns/ico_fb.png" alt="フェイスブックでシェアする">
+<i class="fab fa-facebook-f"></i>
 </a>
 </li>
 <li class="tw">
 <a href="https://twitter.com/intent/tweet?url=<?php echo $p; ?>&text=<?php echo $t; ?>" target="_blank">
-<img src="<?php echo $wp_url; ?>/lib/images/sns/ico_tw.png" alt="ツイッターでシェアする">
-</a>
-</li>
-<li class="li">
-<a href="https://line.me/R/msg/text/?<?php echo $t.'%0A'.$p?>" target="_blank">
-<img src="<?php echo $wp_url; ?>/lib/images/sns/ico_line.png" alt="LINEでシェアする">
-</a>
-</li>
-<li class="ht">
-<a href="http://b.hatena.ne.jp/entry/panel/?url=<?php echo $p; ?>&btitle=<?php echo $t; ?>" target="_blank">
-<img src="<?php echo $wp_url; ?>/lib/images/sns/ico_hatena.png" alt="はてなブックマークに追加する">
+<i class="fab fa-twitter"></i>
 </a>
 </li>
 <li class="pi">
@@ -107,7 +139,7 @@ if (has_post_thumbnail()) {
     $i_l = get_the_post_thumbnail_url(get_the_ID(), 'large');
 } else {
     $i = $wp_url.'/lib/images/no-img.png';
-    $i_l = $wp_url.'/lib/images/no-img-2.png';
+    $i_l = $wp_url.'/lib/images/no-img.png';
 }
 $category = get_the_category();
 ?>
@@ -119,9 +151,6 @@ $category = get_the_category();
 <span class="d-i-block color-white bg-sky mr-05"><?php echo $val->cat_name; ?></span>
 <?php endforeach; ?>
 <h3><?php echo $t; ?></h3>
-<div class="meta">
-<time datetime="<?php echo $time; ?>"><?php echo $time; ?></time>
-</div>
 </div>
 </a>
 </li>

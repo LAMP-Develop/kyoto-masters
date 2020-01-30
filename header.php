@@ -1,7 +1,7 @@
 <?php
-error_reporting(0); // エラーの非表示
 $home = esc_url(home_url());
-$wp_url = get_template_directory_uri(); ?>
+$wp_url = get_template_directory_uri();
+?>
 <!DOCTYPE HTML>
 <html lang="ja">
 <head>
@@ -28,52 +28,54 @@ if (!is_home() && !is_front_page()) {
     get_search_form();
 }
 ?>
-<div class="head-sns abs-cr">
-<ul class="color-sky pc-only">
+
+<!-- language -->
+<div class="head-language abs-cr">
+<?php
+$languages = icl_get_languages('skip_missing=0&orderby=id&order=desc&link_empty_to=0');
+?>
+<ul class="dropdwn pc-only">
+<li>
+<a href="#"><i class="fas fa-globe-americas mr-05"></i>Languages <i class="fas fa-caret-down"></i></a>
+<ul class="dropdwn-menu">
+<?php foreach ($languages as $key => $val): ?>
+<li>
+<a href="<?php echo $val['url']; ?>"><img src="<?php echo $val['country_flag_url']; ?>" alt="<?php echo $val['native_name']; ?>"><?php echo $val['native_name']; ?></a>
+</li>
+<?php endforeach; ?>
+</ul>
+</li>
 </ul>
 </div>
+
 <button type="button" class="sp-only drawer-toggle drawer-hamburger">
 <span class="drawer-hamburger-icon"></span>
 </button>
 <nav class="sp-only sp-mneu drawer-nav bg-sky color-white" role="navigation">
 <ul class="drawer-menu">
 <?php
-$args = array(
+$args = [
   'orderby' => 'ID',
   'order' => 'ASC',
   'hide_empty' => 0,
-  'exclude' => '1,2'
-);
+];
 $categories = get_categories($args);
 foreach ($categories as $kye => $category) { ?>
 <li class="cat-link">
 <a class="drawer-menu-item" href="<?php echo get_category_link($category->term_id); ?>">
-<?php if ($kye == 0) {
-    echo '<i class="fas fa-chair mr-1"></i>';
-} elseif ($kye == 1) {
-    echo '<i class="fas fa-pencil-alt mr-1"></i>';
-} elseif ($kye == 2) {
-    echo '<i class="fas fa-th mr-1"></i>';
-} elseif ($kye == 3) {
-    echo '<i class="fas fa-border-all mr-1"></i>';
-} elseif ($kye == 4) {
-    echo '<i class="fas fa-tools mr-1"></i>';
-} elseif ($kye == 5) {
-    echo '<i class="fas fa-home mr-1"></i>';
-} ?>
 <?php echo $category->name; ?>
 </a>
 </li>
 <?php } ?>
 <li class="drawer-menu-item mt-2"><a class="drawer-menu-item" href="<?php echo $home; ?>/">トップ</a></li>
-<li class="drawer-menu-item"><a class="drawer-menu-item" href="https://www.estorage.co.jp/?utm_source=shunomagazine&utm_medium=owned&utm_campaign=shunomagazine_owned" target="_blank">運営会社</a></li>
+<li class="drawer-menu-item"><a class="drawer-menu-item" href="https://lamp.jp" target="_blank">運営会社</a></li>
 <li class="drawer-menu-item"><a class="drawer-menu-item" href="<?php echo $home; ?>/site-map/">サイトマップ</a></li>
 <li class="drawer-menu-item"><a class="drawer-menu-item" href="<?php echo $home; ?>/privacy-policy/">プライバシーポリシー</a></li>
-<li class="mt-2"><ul class="nav-sns txt-c color-white mb-1">
+<!-- <li class="mt-2"><ul class="nav-sns txt-c color-white mb-1">
 <li class="mr-1 d-i-block"><a href="https://www.facebook.com/shunolabo/" target="_blank"><i class="fab fa-facebook"></i></a></li>
 <li class="mr-1 d-i-block"><a href="https://www.instagram.com/shunolabo/" target="_blank"><i class="fab fa-instagram"></i></a></li>
 <li class="d-i-block"><a href="https://www.pinterest.jp/pin/find/?description=&media=&url=https%3A%2F%2Fwww.estorage.co.jp%2F" target="_blank"><i class="fab fa-pinterest"></i></a></li>
-</ul></li>
+</ul></li> -->
 </ul>
 </nav>
 </div>

@@ -8,10 +8,61 @@ FontAwesomeConfig = {
 };
 import '@fortawesome/fontawesome-free/js/all.js';
 import 'jquery-drawer';
+import 'slick-carousel';
 
 // jQuery
 $(function() {
-  $('.drawer').drawer();
+  // スライドショー
+  $('.recipe-posts').slick({
+    centerMode: true,
+    slidesToShow: 3,
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    arrows: false,
+    responsive: [{
+        breakpoint: 769,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          autoplay: false,
+        }
+      }
+    ]
+  });
+  // スマホメニュークリックで閉じる
+  $('.cat-link a').on('click', function() {
+    $('.drawer').drawer('close');
+  });
+  // ドロップダウン
+  $('.dropdwn li').hover(function() {
+    $('ul:not(:animated)', this).slideDown();
+  }, function() {
+    $('.dropdwn-menu', this).slideUp();
+  });
+});
+
+// スマホメニュー
+$(window).on('load resize', function() {
+  let w = $(window).width();
+  if (w <= 768) {
+    $('.drawer').drawer();
+  }
+});
+
+// Scroll event
+$(window).on('load scroll', function() {
+  var s = $(window).scrollTop();
+  if (s >= 100) {
+    $('#header').addClass('scroll-on');
+  } else {
+    $('#header').removeClass('scroll-on');
+  }
 });
 
 // Google Fonts

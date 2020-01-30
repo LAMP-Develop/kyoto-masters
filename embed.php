@@ -12,8 +12,8 @@ if (!headers_sent()) {
 </head>
 <body>
 <?php
-if (have_posts()) :
-while (have_posts()) : the_post();
+if (have_posts()):
+while (have_posts()): the_post();
 ?>
 <div class="wp-embed-main">
 <a target="_blank" href="<?php the_permalink(); ?>" <?php post_class('wp-embed'); ?>>

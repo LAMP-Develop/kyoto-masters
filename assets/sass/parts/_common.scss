@@ -364,27 +364,6 @@ input:focus, button:focus {
 
     &:last-child {
       position: relative;
-
-      &::before, &::after {
-        z-index: 1;
-        position: absolute;
-        bottom: 0;
-        content: '';
-        display: inline-block;
-        vertical-align: middle;
-        width: 1px;
-        height: 1rem;
-        transform: rotate(45deg);
-        background-color: #707070;
-      }
-
-      &::before {
-        left: -1rem;
-      }
-
-      &::after {
-        right: -1rem;
-      }
     }
   }
 }
@@ -462,43 +441,4 @@ input:focus, button:focus {
 
 .bg-white {
   background-color: $white;
-}
-
-.btn {
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  min-width: 240px;
-  height: auto;
-  line-height: 1;
-  font-size: 1rem;
-  color: $white;
-  padding: 20px 0;
-  text-align: center;
-  background: linear-gradient(135deg, transparent 10px, $primary 0) top left, linear-gradient(225deg, transparent 0, $primary 0) top right, linear-gradient(315deg, transparent 10px, $primary 0) bottom right, linear-gradient(45deg, transparent 0, $primary 0) bottom left;
-  background-size: 50% 50%;
-  background-repeat: no-repeat;
-}
-
-.btn-2 {
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  line-height: 1;
-  font-size: .9rem;
-  color: $white;
-  border-radius: 30px;
-  border: solid 1px $white;
-  padding: 20px 0;
-  text-align: center;
-}
-
-.btn-3 {
-  color: $white;
-  border: solid 1px $white;
-
-  &:hover {
-    background-color: $white;
-    color: $primary;
-  }
 }

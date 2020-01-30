@@ -2,18 +2,21 @@
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
-  background-color: $dark;
-  // background-image: url('../images/bg_mv.jpg');
-  // background-position: center center;
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  height: 350px;
+  background-image: url('../images/bg_mv.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+
+  @include media-md() {
+    background-position: 65% center;
+  }
 
   .inner {
     box-sizing: border-box;
-    padding-left: 40%;
+    padding-right: 40%;
     @include media-lg() {
-      padding-left: 0;
+      padding: 0;
     }
 
     h2 {
@@ -74,7 +77,7 @@
   background-color: #fff;
   box-sizing: border-box;
   padding: $font-size-base*0.3 $font-size-base*0.8;
-  margin-left: $font-size-base*0.8;
+  margin-right: $font-size-base*0.8;
   margin-bottom: $font-size-base*0.8;
   line-height: 1;
   font-size: $font-size-base*0.8;

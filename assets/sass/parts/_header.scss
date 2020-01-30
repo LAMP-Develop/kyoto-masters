@@ -47,21 +47,48 @@ header {
   cursor: pointer;
 }
 
-.head-sns ul li {
-  display: inline-block;
-  vertical-align: middle;
+.head-language {
+  z-index: 1;
 
-  &:last-child {
-    font-size: 0;
+  li {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
 
     a {
-      font-size: 0;
+      line-height: 1;
     }
   }
+}
 
-  a {
-    font-size: 1.4rem;
-    line-height: 1;
+.dropdwn {
+  display: flex;
+
+  li {
+    position: relative;
+    display: block;
+    cursor: pointer;
+  }
+}
+
+.dropdwn-menu {
+  z-index: 1;
+  width: 100%;
+  display: none;
+  position: absolute;
+  padding: $font-size-base*0.5 0;
+  background-color: $white;
+
+  li {
+    width: 100%;
+
+    a {
+      text-align: left;
+      box-sizing: border-box;
+      padding: $font-size-base*0.5 $font-size-base;
+      display: block;
+      font-size: $font-size-base*0.8;
+    }
   }
 }
 
@@ -70,6 +97,7 @@ header {
     z-index: 998;
     right: -20rem;
   }
+
   &.drawer-open {
     .drawer-hamburger {
       background-color: transparent;
@@ -106,6 +134,7 @@ header {
     @include media-md() {
       box-shadow: none !important;
     }
+
     &:after,
     &:before {
       background-color: #fff;

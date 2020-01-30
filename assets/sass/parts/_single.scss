@@ -1,0 +1,246 @@
+.post-inner {
+  font-size: $font-size-base*0.9;
+  overflow-wrap: break-word;
+
+  .wp-video {
+    width: 100% !important;
+  }
+
+  p {
+    line-height: 1.5;
+    margin: 0 auto $font-size-base;
+
+    a {
+      color: $link;
+
+      &[target="_blank"]::after {
+        content: '\f35d';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: bold;
+        margin-left: 3px;
+      }
+
+      &.pseudo[target="_blank"]::after {
+        content: none;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  h2 {
+    position: relative;
+    font-size: $font-size-base*1.5;
+    box-sizing: border-box;
+    padding: $font-size-base*0.8;
+    background-color: $gray-1;
+    border-left: solid 3px $primary;
+    margin: $font-size-base*2 auto $font-size-base*1.5;
+  }
+
+  h3 {
+    font-size: $font-size-base*1.1;
+    margin: $font-size-base*2 auto $font-size-base;
+    padding-bottom: $font-size-base*0.5;
+    border-bottom: solid 1px $primary;
+    box-sizing: border-box;
+    background-color: $white;
+  }
+
+  h4 {
+    font-size: $font-size-base;
+    margin: $font-size-base*1.6 auto $font-size-base;
+
+    &::before {
+      content: '●';
+      margin-right: $font-size-base*0.5;
+    }
+  }
+
+  .aligncenter,
+  img {
+    display: block;
+    margin: $font-size-base auto $font-size-base*2;
+  }
+
+  img {
+    margin: $font-size-base*2 auto;
+    transition: 0.3s;
+  }
+
+  a:hover img {
+    opacity: 0.8;
+  }
+
+  ul {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: $font-size-base*1.5;
+    list-style: inherit;
+    margin: $font-size-base auto;
+  }
+
+  ol {
+    counter-reset: item;
+    list-style-type: none;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: $font-size-base*1.3;
+    list-style: inherit;
+    margin: $font-size-base auto;
+
+    ol {
+      padding-left: $font-size-base;
+    }
+  }
+
+  ul > li {
+    list-style: inherit;
+    margin-bottom: $font-size-base*0.5;
+  }
+
+  ol > li {
+    text-indent: -1rem;
+    list-style: none;
+    margin-bottom: $font-size-base*0.5;
+
+    &:before {
+      counter-increment: item;
+      content: counter(item) ".";
+      padding-right: 0.5em;
+      font-weight: bold;
+      color: $primary;
+    }
+  }
+
+  ol > li:last-child,
+  ul > li:last-child {
+    margin-bottom: 0;
+  }
+
+  table {
+    border-collapse: collapse;
+    margin-bottom: $font-size-base;
+
+    td,
+    th {
+      border: solid 1px $gray-2;
+      box-sizing: border-box;
+      padding: $font-size-base*0.5 $font-size-base;
+    }
+  }
+
+  iframe {
+    max-width: 100%;
+    border: 0;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.wp-embedded-content {
+  display: inline-block;
+  box-sizing: border-box;
+  max-width: 100% !important;
+  height: 98px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.post-inner blockquote:not(.wp-embedded-content) {
+  position: relative;
+  margin: 0 auto $font-size-base;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: $font-size-base*1.5 $font-size-base $font-size-base $font-size-base*1.5;
+  background-color: $gray-2;
+
+  &::before {
+    content: '”';
+    z-index: 1;
+    display: inline-block;
+    position: absolute;
+    top: $font-size-base*0.5;
+    left: $font-size-base*0.5;
+    font-size: $font-size-base*2;
+    color: #ccc;
+  }
+
+  p {
+    font-size: $font-size-base*0.8;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.single-tags {
+  li {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: $font-size-base*0.5;
+    margin-bottom: $font-size-base*0.5;
+    box-sizing: border-box;
+  }
+
+  a {
+    padding: $font-size-base*0.2 $font-size-base*0.5;
+  }
+}
+
+#relation-post {
+  .post-list li {
+    width: 22%;
+    margin-right: 2.5%;
+    @include media-md() {
+      display: inline-block;
+      vertical-align: top;
+      width: 47%;
+      margin: 0 5.5% $font-size-base 0;
+    }
+
+    &:nth-child(2n) {
+      width: 22%;
+      margin-right: 2.5%;
+      @include media-md() {
+        width: 46%;
+        margin-right: 0;
+      }
+    }
+
+    &:last-child {
+      margin-right: 0;
+      @include media-md() {
+        width: 46%;
+        margin-right: 0;
+      }
+    }
+
+    .txt {
+      padding: $font-size-base*0.8 0 0;
+      @include media-md() {
+        padding: $font-size-base*0.8 0;
+      }
+
+      h3 {
+        font-size: $font-size-base*0.8;
+        margin: 0;
+      }
+
+      span {
+        font-size: $font-size-base*0.6;
+        margin-bottom: $font-size-base*0.5;
+      }
+    }
+  }
+}

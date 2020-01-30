@@ -2,10 +2,10 @@
 $home = esc_url(home_url());
 $wp_url = get_template_directory_uri();
 get_header(); ?>
-<section id="mv" class="sec color-white">
+<section id="mv" class="sec">
 <div class="wrap">
 <div class="inner">
-<h2 class="mincho w-normal">あなたの快適な生活を彩る</h2>
+<h2 class="mincho w-normal">京都の情報を届けるメディア</h2>
 <?php get_search_form(); ?>
 <div class="search-tag mt-2">
 <span class="mr-1">HOT WORD</span>
@@ -23,13 +23,13 @@ get_header(); ?>
 <h2 class="ttl2 txt-c"><span class="color-sky d-block">新着記事</span><span>RECENT POSTS</span></h2>
 <ul class="post-list mb-2">
 <?php
-$args = array(
-  'post_type' => 'post',
-  'posts_per_page' => 6,
-  'cat' => ''
-);
-$query = new WP_Query($args);
-if ($query->have_posts()): while ($query->have_posts()): $query->the_post();
+$args = [
+  'posts_per_page' => 12,
+  'orderby' => 'date',
+  'order' => 'DESC'
+];
+$posts = get_posts($args);
+foreach ($posts as $post): setup_postdata($post);
 $p = get_the_permalink();
 $t = get_the_title();
 $time = get_the_time('Y-m-d');
@@ -38,7 +38,7 @@ if (has_post_thumbnail()) {
     $i_l = get_the_post_thumbnail_url(get_the_ID(), 'full');
 } else {
     $i = $wp_url.'/lib/images/no-img.png';
-    $i_l = $wp_url.'/lib/images/no-img-2.png';
+    $i_l = $wp_url.'/lib/images/no-img.png';
 }
 $category = get_the_category();
 ?>
@@ -56,7 +56,7 @@ $category = get_the_category();
 </div>
 </a>
 </li>
-<?php endwhile; endif; wp_reset_query(); ?>
+<?php endforeach; wp_reset_postdata(); ?>
 </ul>
 <div class="txt-c">
 <a href="<?php echo $home; ?>/new-post/" class="btn">一覧を見る</a>
@@ -105,19 +105,18 @@ $category = get_the_category();
 </div>
 </section>
 
-<section id="feature" class="sec">
+<!-- <section id="feature" class="sec">
 <div class="wrap">
 <h2 class="ttl2 txt-c"><span class="color-sky d-block">おすすめ記事</span><span>RECOMMEND</span></h2>
 </div>
 <ul class="feature-posts recipe-posts post-list">
 <?php
-$args = array(
-'post_type' => 'post',
-'posts_per_page' => 6,
-'orderby' => 'rand'
-);
-$query = new WP_Query($args);
-if ($query->have_posts()): while ($query->have_posts()): $query->the_post();
+$args = [
+  'posts_per_page' => 6,
+  'orderby' => 'rand'
+];
+$posts = get_posts($args);
+foreach ($posts as $post): setup_postdata($post);
 $p = get_the_permalink();
 $t = get_the_title();
 $time = get_the_time('Y-m-d');
@@ -126,13 +125,13 @@ if (has_post_thumbnail()) {
     $i_l = get_the_post_thumbnail_url(get_the_ID(), 'full');
 } else {
     $i = $wp_url.'/lib/images/no-img.png';
-    $i_l = $wp_url.'/lib/images/no-img-2.png';
+    $i_l = $wp_url.'/lib/images/no-img.png';
 }
 $category = get_the_category();
 ?>
 <li>
 <a href="<?php echo $p; ?>">
-<img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x,<?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
+<img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x, <?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
 <div class="txt">
 <?php foreach ($category as $key => $val): ?>
 <span class="d-i-block color-white bg-sky"><?php echo $val->cat_name; ?></span>
@@ -144,11 +143,11 @@ $category = get_the_category();
 </div>
 </a>
 </li>
-<?php endwhile; endif; wp_reset_query(); ?>
+<?php endforeach; wp_reset_postdata(); ?>
 </ul>
-</section>
+</section> -->
 
-<section id="keyword" class="sec bg-gray-a">
+<!-- <section id="keyword" class="sec bg-gray-a">
 <div class="wrap">
 <h2 class="ttl2 txt-c"><span class="color-sky d-block">話題のキーワード</span><span>KEYWORD</span></h2>
 <ul class="txt-c tag-list">
@@ -167,5 +166,5 @@ $tag_slug = $tag->slug;
 <?php endforeach; ?>
 </ul>
 </div>
-</section>
+</section> -->
 <?php get_footer();

@@ -30,6 +30,7 @@
     "jquery": "^3.4.1",
     "jquery-drawer": "^3.2.2",
     "popper.js": "^1.16.0",
+    "slick-carousel": "^1.8.1",
     "uikit": "^3.2.6"
   },
   "devDependencies": {

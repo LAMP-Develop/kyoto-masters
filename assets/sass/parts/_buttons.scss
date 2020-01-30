@@ -1,0 +1,36 @@
+.btn {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  min-width: 240px;
+  height: auto;
+  line-height: 1;
+  font-size: 1rem;
+  color: $white;
+  background-color: $primary;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.btn-2 {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 1;
+  font-size: .9rem;
+  color: $white;
+  border-radius: 30px;
+  border: solid 1px $white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.btn-3 {
+  color: $white;
+  border: solid 1px $white;
+
+  &:hover {
+    background-color: $white;
+    color: $primary;
+  }
+}
