@@ -1,18 +1,34 @@
 <?php
 $home = esc_url(home_url());
 $wp_url = get_template_directory_uri();
+$lang = ICL_LANGUAGE_CODE;
 get_header(); ?>
 <section id="mv" class="sec">
 <div class="wrap">
 <div class="inner">
-<h2 class="mincho w-normal">京都の情報を届けるメディア</h2>
+<?php
+$lang_flag = false;
+if ($lang === 'en') {
+    $ttl = 'Media that delivers information on Kyoto';
+} elseif ($lang === 'ko') {
+    $ttl = '교토의 정보 전달 매체';
+} elseif ($lang === 'zh-hans') {
+    $ttl = '传播京都信息的媒体';
+} elseif ($lang === 'zh-hant') {
+    $ttl = '傳播京都信息的媒體';
+} else {
+    $lang_flag = true;
+    $ttl = '京都の情報を届けるメディア';
+}
+?>
+<h2 class="mincho w-normal"><?php echo $ttl; ?></h2>
 <?php get_search_form(); ?>
 <div class="search-tag mt-2">
 <span class="mr-1">HOT WORD</span>
-<a href="<?php echo $home; ?>/tag/マンション/" class="hot-word">マンション</a>
-<a href="<?php echo $home; ?>/tag/賃貸/" class="hot-word">賃貸</a>
-<a href="<?php echo $home; ?>/tag/アーキテリア/" class="hot-word">アーキテリア</a>
-<a href="<?php echo $home; ?>/tag/おしゃれ/" class="hot-word">おしゃれ</a>
+<a href="#" class="hot-word">タグ名</a>
+<a href="#" class="hot-word">タグ名</a>
+<a href="#" class="hot-word">タグ名</a>
+<a href="#" class="hot-word">タグ名</a>
 </div>
 </div>
 </div>
@@ -20,7 +36,11 @@ get_header(); ?>
 
 <section id="new-posts" class="sec">
 <div class="wrap">
+<?php if ($lang_flag): ?>
 <h2 class="ttl2 txt-c"><span class="color-sky d-block">新着記事</span><span>RECENT POSTS</span></h2>
+<?php else: ?>
+<h2 class="ttl2 txt-c"><span class="color-sky d-block">RECENT POSTS</span></h2>
+<?php endif; ?>
 <ul class="post-list mb-2">
 <?php
 $args = [
@@ -59,14 +79,22 @@ $category = get_the_category();
 <?php endwhile; wp_reset_query(); ?>
 </ul>
 <div class="txt-c">
+<?php if ($lang_flag): ?>
 <a href="<?php echo $home; ?>/new-post/" class="btn">一覧を見る</a>
+<?php else: ?>
+<a href="<?php echo $home; ?>/new-post/" class="btn">More</a>
+<?php endif; ?>
 </div>
 </div>
 </section>
 
 <section id="ranking" class="sec bg-gray-a">
 <div class="wrap">
+<?php if ($lang_flag): ?>
 <h2 class="ttl2"><span class="color-sky d-block">今週の人気ランキング</span><span>RANKING</span></h2>
+<?php else: ?>
+<h2 class="ttl2"><span class="color-sky d-block">RANKING</span></h2>
+<?php endif; ?>
 <ul class="post-list ranking-list">
 <?php
 $args = get_popular_args('weekly', '4');
