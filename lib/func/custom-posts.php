@@ -34,12 +34,14 @@ function create_post_type()
                 'all_items' => 'カテゴリー一覧',
                 'add_new_item' => 'カテゴリーを追加'
             ],
-            'rewrite' => ['slug' => 'flowering'],
-            'with_front' => false,
-            'hierarchical' => true,
+            'rewrite' => [
+              'slug' => 'flowering',
+              'with_front' => true,
+              'hierarchical' => true,
+            ],
             'show_in_rest' => true
         ]
     );
-    flush_rewrite_rules(false);
+    flush_rewrite_rules(true);
 }
 add_action('init', 'create_post_type');
