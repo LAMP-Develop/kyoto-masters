@@ -38,7 +38,7 @@ function create_post_type()
             'with_front' => false,
             'hierarchical' => true,
             'show_in_rest' => true
-      ]
+        ]
     );
     flush_rewrite_rules(false);
 }
