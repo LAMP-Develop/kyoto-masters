@@ -6,14 +6,24 @@ get_header();
 $lang = ICL_LANGUAGE_CODE;
 if ($lang === 'en') {
     $modified_time = 'Updated date';
+    $migoro_str = 'Best time';
+    $kaika = 'Flowering status';
 } elseif ($lang === 'ko') {
     $modified_time = '업데이트 날짜';
+    $migoro_str = '예년의 절정';
+    $kaika = '개화 상황';
 } elseif ($lang === 'zh-hans') {
     $modified_time = '更新日期';
+    $migoro_str = '一年中最好的时间';
+    $kaika = '开花状况';
 } elseif ($lang === 'zh-hant') {
     $modified_time = '更新日期';
+    $migoro_str = '一年中最好的時間';
+    $kaika = '開花狀況';
 } else {
     $modified_time = '更新日';
+    $migoro_str = '例年の見頃';
+    $kaika = '開花状況';
 }
 
 if (have_posts()): the_post();
@@ -29,6 +39,16 @@ if (has_post_thumbnail()) {
     $i = $wp_url.'/lib/images/no-img.png';
     $i_l = $wp_url.'/lib/images/no-img.png';
 }
+if (get_field('migoro', get_the_ID())) {
+    $migoro = get_field('migoro', get_the_ID());
+} else {
+    $migoro = '';
+}
+if (get_field('flower_level', get_the_ID())) {
+    $flower_level = get_field('flower_level', get_the_ID());
+} else {
+    $flower_level = '';
+}
 ?>
 <section class="sec">
 <div id="single-wrap" class="wrap main-wrap">
@@ -39,6 +59,18 @@ if (has_post_thumbnail()) {
 <h2 class="postttl"><?php echo $t; ?></h2>
 <div class="meta">
 <time class="color-sky" datetime="<?php echo $time; ?>"><?php echo $modified_time; ?>：<?php the_modified_time('Y.m.d'); ?></time>
+</div>
+<!-- 開花情報 -->
+<div class="post-flowering">
+<div class="flowering">
+<span><?php echo $kaika; ?></span>
+<span><img src="<?php echo $wp_url; ?>/lib/images/sakura_<?php echo $flower_level['value']; ?>.svg" alt="桜の開花情報"></span>
+<span><?php echo $flower_level['label']; ?></span>
+</div>
+<div class="migoro">
+<span><?php echo $migoro_str; ?></span>
+<span><?php echo $migoro; ?></span>
+</div>
 </div>
 <!-- メインコンテンツ -->
 <div class="post-inner mb-3">

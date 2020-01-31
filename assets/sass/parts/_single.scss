@@ -254,3 +254,46 @@
     margin-top: $font-size-base*1.5;
   }
 }
+
+.post-flowering {
+  .flowering {
+    box-sizing: border-box;
+    background-color: $pink;
+    padding: $font-size-base;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    span {
+      &:first-child {
+        margin-right: $font-size-base;
+        font-size: $font-size-base*0.8;
+      }
+
+      &:last-child {
+        margin-left: $font-size-base;
+      }
+
+      img {
+        width: $font-size-base*2;
+        height: auto;
+      }
+    }
+  }
+
+  .migoro {
+    box-sizing: border-box;
+    background-color: $gray-1;
+    padding: $font-size-base;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    span {
+      &:first-child {
+        margin-right: $font-size-base;
+        font-size: $font-size-base*0.8;
+      }
+    }
+  }
+}
