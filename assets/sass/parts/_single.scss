@@ -131,11 +131,7 @@
       border: solid 1px $gray-2;
       box-sizing: border-box;
       padding: $font-size-base*0.5 $font-size-base;
-    }
-
-    @include media-md() {
-      td,
-      th {
+      @include media-md() {
         font-size: $font-size-base*0.8;
       }
     }
