@@ -51,9 +51,9 @@ if (get_field('flower_level', get_the_ID())) {
 }
 
 $pictures = [];
-for ($i=1; $i <= 5; $i++) {
-    if (get_field('picture_'.$i)) {
-        $pictures[] = get_field('picture_'.$i);
+for ($j=1; $j <= 5; $j++) {
+    if (get_field('picture_'.$j)) {
+        $pictures[] = get_field('picture_'.$j);
     }
 }
 ?>
