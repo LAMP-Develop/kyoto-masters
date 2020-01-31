@@ -89,7 +89,7 @@ if (get_field('flower_level', get_the_ID())) {
 </div>
 </div>
 <div class="txt">
-<h3><?php echo $t; ?></h3>
+<h3 class="mincho"><?php echo $t; ?></h3>
 </div>
 </a>
 </li>
