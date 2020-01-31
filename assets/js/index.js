@@ -13,27 +13,20 @@ import 'slick-carousel';
 // jQuery
 $(function() {
   // スライドショー
-  $('.recipe-posts').slick({
-    centerMode: true,
-    slidesToShow: 3,
-    dots: true,
-    infinite: true,
-    autoplay: true,
+  $('.slider-for').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
     arrows: false,
-    responsive: [{
-        breakpoint: 769,
-        settings: {
-          slidesToShow: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          autoplay: false,
-        }
-      }
-    ]
+    fade: true,
+    asNavFor: '.slider-nav'
+  });
+  $('.slider-nav').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    asNavFor: '.slider-for',
+    arrows: false,
+    centerMode: true,
+    focusOnSelect: true
   });
   // スマホメニュークリックで閉じる
   $('.cat-link a').on('click', function() {

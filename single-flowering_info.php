@@ -49,13 +49,30 @@ if (get_field('flower_level', get_the_ID())) {
 } else {
     $flower_level = '';
 }
+
+$pictures = [];
+for ($i=1; $i <= 5; $i++) {
+    if (get_field('picture_'.$i)) {
+        $pictures[] = get_field('picture_'.$i);
+    }
+}
 ?>
 <section class="sec">
 <div id="single-wrap" class="wrap main-wrap">
 <article id="main-content" class="post-main">
-<div class="i-catch">
+<!-- 画像 -->
+<div class="slider-for i-catch">
 <img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x,<?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
+<?php foreach ($pictures as $key => $pic): ?>
+<img src="<?php echo $pic; ?>" alt="<?php echo $t; ?>の桜">
+<?php endforeach; ?>
 </div>
+<div class="slider-nav">
+<?php foreach ($pictures as $key => $pic): ?>
+<img src="<?php echo $pic; ?>" alt="<?php echo $t; ?>の桜">
+<?php endforeach; ?>
+</div>
+
 <h2 class="postttl"><?php echo $t; ?></h2>
 <div class="meta">
 <time class="color-sky" datetime="<?php echo $time; ?>"><?php echo $modified_time; ?>：<?php the_modified_time('Y.m.d'); ?></time>

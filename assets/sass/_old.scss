@@ -214,6 +214,7 @@ footer {
 
 #main-content {
   flex: 1;
+  max-width: calc(100% - 330px);
 
   .post-list {
     text-align: left;

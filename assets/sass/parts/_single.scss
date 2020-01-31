@@ -254,6 +254,18 @@
     margin-top: $font-size-base*1.5;
   }
 }
+/* 開花情報 */
+.slider-for,
+.slider-nav {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+.slider-nav {
+  margin-bottom: $font-size-base*2;
+}
 
 .post-flowering {
   .flowering {

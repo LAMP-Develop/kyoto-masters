@@ -918,7 +918,8 @@ footer img {
   display: flex; }
 
 #main-content {
-  flex: 1; }
+  flex: 1;
+  max-width: calc(100% - 330px); }
   #main-content .post-list {
     text-align: left; }
     #main-content .post-list li {
@@ -2487,6 +2488,17 @@ a.drawer-menu-item {
   width: 100%;
   height: 300px;
   margin-top: 1.5rem; }
+
+/* 開花情報 */
+.slider-for,
+.slider-nav {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 0; }
+
+.slider-nav {
+  margin-bottom: 2rem; }
 
 .post-flowering .flowering {
   box-sizing: border-box;
