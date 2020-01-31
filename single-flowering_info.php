@@ -68,6 +68,7 @@ for ($i=1; $i <= 5; $i++) {
 <?php endforeach; ?>
 </div>
 <div class="slider-nav">
+<img src="<?php echo $i; ?>" alt="<?php echo $t; ?>">
 <?php foreach ($pictures as $key => $pic): ?>
 <img src="<?php echo $pic; ?>" alt="<?php echo $t; ?>の桜">
 <?php endforeach; ?>
