@@ -2278,7 +2278,8 @@ a.drawer-menu-item {
 .flowering-list li .txt h3 {
   text-align: center;
   font-weight: bold;
-  margin: 0; }
+  margin: 0;
+  font-size: 1.5rem; }
 
 .flower-info {
   z-index: 1;
