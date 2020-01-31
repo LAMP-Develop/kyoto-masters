@@ -132,6 +132,17 @@
       box-sizing: border-box;
       padding: $font-size-base*0.5 $font-size-base;
     }
+
+    @include media-md() {
+      td,
+      th {
+        font-size: $font-size-base*0.8;
+      }
+    }
+
+    th {
+      white-space: nowrap;
+    }
   }
 
   iframe {

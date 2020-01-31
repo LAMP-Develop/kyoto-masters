@@ -2402,6 +2402,12 @@ a.drawer-menu-item {
       border: solid 1px #eee;
       box-sizing: border-box;
       padding: 0.5rem 1rem; }
+    @media (max-width: 768px) {
+      .post-inner table td,
+      .post-inner table th {
+        font-size: 0.8rem; } }
+    .post-inner table th {
+      white-space: nowrap; }
   .post-inner iframe {
     max-width: 100%;
     border: 0;
