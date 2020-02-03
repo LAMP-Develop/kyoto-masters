@@ -19,7 +19,7 @@ $wp_url = get_template_directory_uri();
 } ?>">
 <div class="wrap relative">
 <h1 class="txt-c d-i-block">
-<a href="<?php echo $home; ?>/">
+<a href="<?php echo $home; ?>">
 <img src="<?php echo $wp_url; ?>/lib/images/logo.svg" alt="<?php bloginfo('name'); ?>">
 </a>
 </h1>
@@ -67,7 +67,7 @@ foreach ($categories as $kye => $category) { ?>
 </a>
 </li>
 <?php } ?>
-<li class="drawer-menu-item mt-2"><a class="drawer-menu-item" href="<?php echo $home; ?>/">トップ</a></li>
+<li class="drawer-menu-item mt-2"><a class="drawer-menu-item" href="<?php echo $home; ?>">トップ</a></li>
 <li class="drawer-menu-item"><a class="drawer-menu-item" href="https://lamp.jp" target="_blank">運営会社</a></li>
 <!-- <li class="drawer-menu-item"><a class="drawer-menu-item" href="<?php echo $home; ?>/site-map/">サイトマップ</a></li> -->
 <li class="drawer-menu-item"><a class="drawer-menu-item" href="<?php echo $home; ?>/privacy-policy/">プライバシーポリシー</a></li>

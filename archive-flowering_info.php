@@ -1,12 +1,37 @@
 <?php
 $home = esc_url(home_url());
 $wp_url = get_template_directory_uri();
+
+$lang = ICL_LANGUAGE_CODE;
+$lang_flag = false;
+if ($lang === 'en') {
+    $ttl = 'Media that delivers information on Kyoto';
+    $migoro_str = 'Best time';
+} elseif ($lang === 'ko') {
+    $ttl = '교토의 정보 전달 매체';
+    $migoro_str = '예년의 절정';
+} elseif ($lang === 'zh-hans') {
+    $ttl = '传播京都信息的媒体';
+    $migoro_str = '一年中最好的时间';
+} elseif ($lang === 'zh-hant') {
+    $ttl = '傳播京都信息的媒體';
+    $migoro_str = '一年中最好的時間';
+} else {
+    $lang_flag = true;
+    $ttl = '京都の情報を届けるメディア';
+    $migoro_str = '例年の見頃';
+}
+
 get_header();
 ?>
 <section class="sec">
 <div class="wrap main-wrap">
 <section id="main-content">
+<?php if ($lang_flag): ?>
 <h2 class="ttlcat">すべての開花情報</h2>
+<?php else: ?>
+<h2 class="ttlcat">All flowering info</h2>
+<?php endif; ?>
 <?php
 $terms = get_terms('flowering_info_cat');
 ?>

@@ -2,11 +2,6 @@
 $home = esc_url(home_url());
 $wp_url = get_template_directory_uri();
 $lang = ICL_LANGUAGE_CODE;
-get_header(); ?>
-<section id="mv" class="sec">
-<div class="wrap">
-<div class="inner">
-<?php
 $lang_flag = false;
 if ($lang === 'en') {
     $ttl = 'Media that delivers information on Kyoto';
@@ -25,7 +20,10 @@ if ($lang === 'en') {
     $ttl = '京都の情報を届けるメディア';
     $migoro_str = '例年の見頃';
 }
-?>
+get_header(); ?>
+<section id="mv" class="sec">
+<div class="wrap">
+<div class="inner">
 <h2 class="mincho w-normal"><?php echo $ttl; ?></h2>
 <?php get_search_form(); ?>
 <div class="search-tag mt-2">
@@ -99,9 +97,9 @@ if (get_field('flower_level', get_the_ID())) {
 </ul>
 <div class="txt-c">
 <?php if ($lang_flag): ?>
-<a href="<?php echo $home; ?>/new-post/" class="btn">すべての開花情報を見る</a>
+<a href="<?php echo $home; ?>/flowering-info/" class="btn">すべての開花情報を見る</a>
 <?php else: ?>
-<a href="<?php echo $home; ?>/new-post/" class="btn">More</a>
+<a href="<?php echo $home; ?>/flowering-info/" class="btn">More</a>
 <?php endif; ?>
 </div>
 </div>
