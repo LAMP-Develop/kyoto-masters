@@ -7,7 +7,7 @@
   }
 
   p {
-    line-height: 1.8;
+    line-height: 2;
     margin: 0 auto $font-size-base;
 
     a {
@@ -125,6 +125,9 @@
   table {
     border-collapse: collapse;
     margin-bottom: $font-size-base;
+    @include media-md() {
+      width: 100%;
+    }
 
     td,
     th {
@@ -133,6 +136,7 @@
       padding: $font-size-base*0.5 $font-size-base;
       @include media-md() {
         font-size: $font-size-base*0.8;
+        text-align: left;
       }
     }
 
@@ -275,6 +279,15 @@
 }
 
 .post-flowering {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  @include media-md() {
+    display: block;
+    width: 100%;
+  }
+
   .flowering {
     box-sizing: border-box;
     background-color: $pink;

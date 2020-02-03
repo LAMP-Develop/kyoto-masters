@@ -347,13 +347,10 @@
 
 .flower-info {
   z-index: 1;
-  // position: absolute;
-  // top: 0;
-  // left: 0;
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
-  // width: 50%;
+
   .flower {
     background-color: $pink;
     width: 50%;
@@ -384,5 +381,15 @@
     box-sizing: border-box;
     padding: $font-size-base*0.5;
     text-align: center;
+  }
+}
+
+#relation-post {
+  .flower-info {
+    display: block;
+
+    & > div {
+      width: 100%;
+    }
   }
 }

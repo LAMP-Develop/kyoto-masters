@@ -4,6 +4,7 @@ $wp_url = get_template_directory_uri();
 get_header();
 
 $lang = ICL_LANGUAGE_CODE;
+$lang_flag = false;
 if ($lang === 'en') {
     $modified_time = 'Updated date';
     $migoro_str = 'Best time';
@@ -24,6 +25,7 @@ if ($lang === 'en') {
     $modified_time = '更新日';
     $migoro_str = '例年の見頃';
     $kaika = '開花状況';
+    $lang_flag = true;
 }
 
 if (have_posts()): the_post();
@@ -93,6 +95,10 @@ for ($j=1; $j <= 5; $j++) {
 <!-- メインコンテンツ -->
 <div class="post-inner mb-3">
 <?php the_content(); ?>
+</div>
+<!-- CTA -->
+<?php get_template_part('templates/cta-mk'); ?>
+<div class="post-inner mb-3">
 <!-- 施設概要 -->
 <table>
 <tbody>
@@ -182,7 +188,11 @@ for ($j=1; $j <= 5; $j++) {
 </div>
 
 <section id="relation-post">
-<h3 class="ttl3">関連記事</h3>
+<?php if ($lang_flag): ?>
+<h3 class="ttl3">他の開花情報</h3>
+<?php else: ?>
+<h3 class="ttl3">Others</h3>
+<?php endif; ?>
 <ul class="post-list">
 <?php
 $args = [
@@ -190,27 +200,46 @@ $args = [
   'posts_per_page' => '4',
   'orderby' => 'rand'
 ];
-$posts = get_posts($args);
-foreach ($posts as $post): setup_postdata($post);
+query_posts($args);
+while (have_posts()): the_post();
 $p = get_the_permalink();
 $t = get_the_title();
 if (has_post_thumbnail()) {
-    $i = get_the_post_thumbnail_url(get_the_ID(), 'medium');
-    $i_l = get_the_post_thumbnail_url(get_the_ID(), 'large');
+    $i = get_the_post_thumbnail_url(get_the_ID(), 'large');
+    $i_l = get_the_post_thumbnail_url(get_the_ID(), 'full');
 } else {
     $i = $wp_url.'/lib/images/no-img.png';
     $i_l = $wp_url.'/lib/images/no-img.png';
 }
+if (get_field('migoro', get_the_ID())) {
+    $migoro = get_field('migoro', get_the_ID());
+} else {
+    $migoro = '';
+}
+if (get_field('flower_level', get_the_ID())) {
+    $flower_level = get_field('flower_level', get_the_ID());
+} else {
+    $flower_level = '';
+}
 ?>
 <li>
-<a href="<?php echo $p; ?>">
+<a class="relative" href="<?php echo $p; ?>">
 <img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x,<?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
+<div class="flower-info">
+<div class="flower">
+<span><img src="<?php echo $wp_url; ?>/lib/images/sakura_<?php echo $flower_level['value']; ?>.svg" alt="桜の開花情報"></span>
+<span><?php echo $flower_level['label']; ?></span>
+</div>
+<div class="migoro">
+<span><?php echo $migoro_str; ?><br><?php echo $migoro; ?></span>
+</div>
+</div>
 <div class="txt">
-<h3><?php echo $t; ?></h3>
+<h3 class="mincho txt-c"><?php echo $t; ?></h3>
 </div>
 </a>
 </li>
-<?php endforeach; wp_reset_postdata(); ?>
+<?php endwhile; wp_reset_query(); ?>
 </ul>
 </section>
 </article>

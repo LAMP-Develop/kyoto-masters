@@ -1,0 +1,93 @@
+.cta {
+  position: relative;
+  margin-bottom: $font-size-base*3;
+
+  &.mk {
+    color: $white;
+
+    .inner {
+      display: flex;
+      justify-content: flex-start;
+      align-items: stretch;
+      background-color: #162622;
+      @include media-md() {
+        flex-wrap: wrap;
+      }
+
+      &:last-of-type {
+        background-color: #1A2543;
+      }
+
+      .img {
+        width: 35%;
+        @include media-md() {
+          display: none;
+          width: 100%;
+        }
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .txt {
+        width: 65%;
+        position: relative;
+        text-align: center;
+        box-sizing: border-box;
+        padding: $font-size-base $font-size-base*2;
+        @include media-md() {
+          width: 100%;
+        }
+
+        img {
+          position: absolute;
+
+          &:first-of-type {
+            bottom: 10px;
+            right: 10px;
+          }
+
+          &:last-of-type {
+            top: 10px;
+            left: 10px;
+          }
+        }
+
+        p {
+          &:first-of-type {
+            font-size: $font-size-base;
+            @include media-md() {
+              font-size: 11px;
+            }
+          }
+
+          &:last-of-type {
+            font-size: $font-size-base;
+            @include media-md() {
+              font-size: 10px;
+            }
+          }
+        }
+
+        h3 {
+          font-size: $font-size-base*1.5;
+          margin: $font-size-base auto 0;
+          @include media-md() {
+            font-size: $font-size-base*1.1;
+          }
+        }
+      }
+    }
+  }
+
+  .btn {
+    min-width: 1px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 100px;
+    padding: $font-size-base*0.5 $font-size-base;
+    border: solid 1px $white;
+    margin: 5px auto $font-size-base;
+  }
+}
