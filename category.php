@@ -41,7 +41,9 @@ $category = get_the_category();
 ?>
 <li>
 <a href="<?php echo $p; ?>">
+<div class="post-thumbnail">
 <img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x,<?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
+</div>
 <div class="txt">
 <?php foreach ($category as $key => $val): ?>
 <span class="d-i-block color-white bg-sky mr-05"><?php echo $val->cat_name; ?></span>

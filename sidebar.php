@@ -35,15 +35,17 @@ $comment = get_comments_number(get_the_ID());
 $excerpt = get_the_excerpt();
 $img = '';
 if (has_post_thumbnail()) {
-$img = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
+    $img = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
 } else {
-$img = $wp_url.'/lib/images/no-img.png';
+    $img = $wp_url.'/lib/images/no-img.png';
 }
 ?>
 <li>
 <a href="<?php echo $permalink; ?>">
 <span>0<?php echo $no; ?></span>
+<div class="post-thumbnail">
 <img src="<?php echo $img; ?>" alt="<?php echo $ttl; ?>">
+</div>
 <div class="txt">
 <h4><?php echo $ttl; ?></h4>
 </div>
@@ -56,13 +58,13 @@ $img = $wp_url.'/lib/images/no-img.png';
 $category = get_the_category();
 $cat_id  = $category[0]->cat_ID;
 if (get_ancestors($cat_id, 'category')) {
-$cat_id = get_ancestors($cat_id, 'category');
-$category = get_category($cat_id);
-$cat_name = $category->cat_name;
-$cat_slug = $category->category_nicename;
+    $cat_id = get_ancestors($cat_id, 'category');
+    $category = get_category($cat_id);
+    $cat_name = $category->cat_name;
+    $cat_slug = $category->category_nicename;
 } else {
-$cat_name = $category[0]->cat_name;
-$cat_slug = $category[0]->category_nicename;
+    $cat_name = $category[0]->cat_name;
+    $cat_slug = $category[0]->category_nicename;
 }
 $cat_child = get_term_children($cat_id, 'category');
 if (count($cat_child) != 0):

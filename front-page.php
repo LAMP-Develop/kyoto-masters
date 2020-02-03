@@ -78,7 +78,9 @@ if (get_field('flower_level', get_the_ID())) {
 ?>
 <li>
 <a class="relative" href="<?php echo $p; ?>">
+<div class="post-thumbnail">
 <img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x,<?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
+</div>
 <div class="flower-info">
 <div class="flower">
 <span><img src="<?php echo $wp_url; ?>/lib/images/sakura_<?php echo $flower_level['value']; ?>.svg" alt="桜の開花情報"></span>
@@ -135,7 +137,9 @@ $category = get_the_category();
 ?>
 <li>
 <a href="<?php echo $p; ?>">
+<div class="post-thumbnail">
 <img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x,<?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
+</div>
 <div class="txt">
 <?php foreach ($category as $key => $val): ?>
 <span class="d-i-block color-white bg-sky"><?php echo $val->cat_name; ?></span>
@@ -187,7 +191,9 @@ $category = get_the_category();
 <li class="mb-0">
 <span class="txt-c">0<?php echo $no; ?></span>
 <a href="<?php echo $p; ?>">
+<div class="post-thumbnail">
 <img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x,<?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
+</div>
 <div class="txt">
 <?php foreach ($category as $key => $val): ?>
 <span class="d-i-block color-white bg-sky"><?php echo $val->cat_name; ?></span>
