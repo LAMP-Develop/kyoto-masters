@@ -282,7 +282,6 @@
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
-
   @include media-md() {
     display: block;
     width: 100%;
@@ -326,6 +325,118 @@
         margin-right: $font-size-base;
         font-size: $font-size-base*0.8;
       }
+    }
+  }
+}
+
+.postttl {
+  font-size: $font-size-base*1.6;
+  font-weight: bold;
+  margin: 0 auto $font-size-base*1.5;
+  @include media-sm() {
+    font-size: $font-size-base*1.4;
+  }
+}
+
+.meta {
+  margin: 0 auto $font-size-base*2;
+
+  time {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    padding: $font-size-base*0.2 $font-size-base*0.5;
+  }
+}
+
+.i-catch {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0 auto $font-size-base*2;
+
+  .youtube-wrap {
+    @include media-sm() {
+      padding-top: 100%;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .youtube-wrap {
+    position: relative;
+    padding-top: 75%;
+    background-color: $gray-1;
+  }
+
+  iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.youtube-txt p {
+  color: #848484;
+  font-size: $font-size-base*0.8;
+}
+
+#toc_container {
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100% !important;
+  border: 2px solid $primary !important;
+  margin-bottom: $font-size-base*2;
+  background-color: $white;
+
+  p.toc_title {
+    background-color: $primary;
+    color: $white;
+    padding: $font-size-base*0.5 $font-size-base;
+
+    a {
+      color: $white;
+    }
+
+    &+ ul.toc_list {
+      margin: 0 auto;
+      padding: $font-size-base $font-size-base $font-size-base $font-size-base*2;
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .toc_list > li:last-child {
+    margin: 0 auto;
+  }
+
+  li {
+    margin-bottom: 1em;
+    list-style-type: decimal !important;
+    box-sizing: border-box;
+  }
+
+  ul ul {
+    margin: 0;
+    box-sizing: border-box;
+    padding-left: 1em;
+    margin-top: 0.5em;
+
+    li {
+      margin-bottom: 0.5em;
+      list-style-type: none !important;
     }
   }
 }

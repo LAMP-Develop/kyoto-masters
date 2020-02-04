@@ -2,9 +2,12 @@
 @import "~slick-carousel/slick/slick.scss";
 @import "~slick-carousel/slick/slick-theme.scss";
 
-/* main */
+/* variables */
 @import "variables";
+
+/* mixin */
 @import "mixin";
+
+/* main */
 @import "reset";
-@import "old";
 @import "parts";

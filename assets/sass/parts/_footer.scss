@@ -1,0 +1,39 @@
+footer {
+  h2 {
+    margin: 0 auto 2rem auto;
+  }
+
+  img {
+    width: 200px;
+    height: auto;
+  }
+}
+
+.foot-link li {
+  margin: 0 1rem;
+
+  a {
+    font-size: 0.8rem;
+  }
+}
+
+.foot-sns {
+  margin: 2rem auto;
+
+  a {
+    font-size: 1.4rem;
+
+    img {
+      max-width: 22px;
+      max-height: 22px;
+    }
+  }
+
+  li:last-child {
+    font-size: 0;
+
+    a {
+      font-size: 0;
+    }
+  }
+}

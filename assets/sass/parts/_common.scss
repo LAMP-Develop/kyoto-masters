@@ -5,7 +5,8 @@ body {
   background-color: $white;
 }
 
-input:focus, button:focus {
+button:focus,
+input:focus {
   outline: 0;
 }
 
@@ -343,10 +344,10 @@ input:focus, button:focus {
   position: relative;
   font-size: 1rem;
   font-weight: normal;
-  margin: 0 auto 4rem auto;
-  letter-spacing: .3rem;
+  margin: 0 auto 4rem;
+  letter-spacing: 0.3rem;
   @include media-md() {
-    font-size: .8rem;
+    font-size: 0.8rem;
     margin-bottom: 2rem;
   }
 
@@ -355,9 +356,9 @@ input:focus, button:focus {
       display: block;
       font-family: 'Noto Serif JP', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN', '游明朝', YuMincho, 'HG明朝E', 'ＭＳ Ｐ明朝', 'ＭＳ 明朝', serif;
       font-size: 2.2rem;
-      letter-spacing: .2rem;
-      margin-bottom: .5rem;
-      @include  media-md() {
+      letter-spacing: 0.2rem;
+      margin-bottom: 0.5rem;
+      @include media-md() {
         font-size: 1.6rem;
       }
     }
@@ -371,7 +372,7 @@ input:focus, button:focus {
 .ttlcat {
   font-size: 1.5rem;
   font-weight: normal;
-  margin: 0 auto 1.5rem auto;
+  margin: 0 auto 1.5rem;
   @include media-md() {
     font-size: 1.4rem;
     text-align: center;
@@ -383,7 +384,7 @@ input:focus, button:focus {
   text-align: center;
   color: #2d2d2d;
   font-size: 1.3rem;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 2rem;
   padding-bottom: 1rem;
 
   &::after {
@@ -441,4 +442,112 @@ input:focus, button:focus {
 
 .bg-white {
   background-color: $white;
+}
+
+.main-wrap {
+  position: relative;
+  display: flex;
+  @include media-lg() {
+    display: block;
+  }
+}
+
+#main-content {
+  flex: 1;
+  max-width: calc(100% - 330px);
+  @include media-lg() {
+    position: relative;
+    display: block;
+    margin: 0 auto 2rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .post-list {
+    text-align: left;
+
+    li {
+      width: 45%;
+      margin: 0 4.5% 2rem auto;
+      @include media-lg() {
+        width: 100%;
+        margin: 0 auto 1rem;
+      }
+
+      &:nth-child(2n) {
+        margin: 0 auto 2rem;
+        @include media-lg() {
+          margin: 0 auto 1rem;
+        }
+      }
+
+      .txt {
+        padding: 1.6rem 0;
+        @include media-lg() {
+          padding: 1rem 0;
+        }
+      }
+    }
+  }
+}
+
+.cat-child a {
+  display: block;
+  padding: 0.3rem 0.5rem;
+  line-height: 1;
+  font-size: 0.9rem;
+}
+
+.wp-pagenavi {
+  text-align: center;
+
+  a {
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .page {
+    margin: 0 0.5rem;
+    box-sizing: border-box;
+    padding: 0.4rem 0.7rem;
+
+    &:hover {
+      color: #fff;
+      background-color: #3E3A39;
+    }
+  }
+
+  .current {
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.5rem;
+    padding: 0.4rem 0.7rem;
+    color: #fff;
+    background-color: #3E3A39;
+  }
+}
+
+.followBox li a {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  background: #fafafa;
+  border-bottom: #e5e5e5 solid 3px;
+  padding: 1.3rem 1rem;
+
+  i,
+  img {
+    margin-right: 1rem;
+    font-size: 1.3rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
 }

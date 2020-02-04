@@ -1,0 +1,49 @@
+#sidebar {
+  position: relative;
+  width: 330px;
+  height: auto;
+  will-change: min-height;
+  margin-left: 50px;
+  @include media-lg() {
+    position: relative;
+    display: block;
+    margin: 0 auto 2rem auto;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0;
+  }
+
+  .inner {
+    margin-bottom: 2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: normal;
+    margin: 0 auto 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: solid 2px #d2d2d2;
+  }
+
+  .irui-list li,
+  .tag-list li {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    box-sizing: border-box;
+  }
+
+  .irui-list a,
+  .tag-list a {
+    display: block;
+    font-size: 0.9rem;
+    line-height: 1;
+    box-sizing: border-box;
+    padding: 0.3rem 0.5rem 0.2rem;
+  }
+}

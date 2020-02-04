@@ -1,0 +1,74 @@
+.pc-nav {
+  position: relative;
+  overflow: hidden;
+
+  ul {
+    position: relative;
+    overflow: hidden;
+
+    li {
+      float: left;
+      width: calc(100% / 6);
+      box-sizing: border-box;
+      @include media-sm() {
+        float: none;
+        display: inline-block;
+        vertical-align: top;
+        width: 49%;
+      }
+
+      a {
+        position: relative;
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 1.2rem;
+        text-align: center;
+        font-size: 0.8rem;
+        color: $white;
+        @include media-md() {
+          padding: 1.2rem 10px;
+          font-size: 0.7rem;
+        }
+        @include media-sm() {
+          padding: 10px 0;
+          text-align: left;
+          border-bottom: 0;
+        }
+
+        &::after {
+          content: '';
+          display: inline-block;
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+          -webkit-transform: translateY(-50%);
+          width: 1px;
+          height: 60%;
+          background-color: #d2d2d2;
+          @include media-sm() {
+            content: none;
+          }
+        }
+      }
+
+      &:last-child {
+        a {
+          &::after {
+            content: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+#ranking {
+  .ttl2 {
+    @include media-md() {
+      text-align: center;
+    }
+  }
+}
