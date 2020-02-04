@@ -170,10 +170,10 @@ $category = get_the_category();
 <?php endif; ?>
 <ul class="post-list ranking-list">
 <?php
+$no = 1;
 $args = get_popular_args('weekly', '4');
 query_posts($args);
 while (have_posts()): the_post();
-$no = 1;
 $p = get_the_permalink();
 $t = get_the_title();
 $time = get_the_time('Y-m-d');
