@@ -9,7 +9,9 @@
   height: 300px;
 
   @include media-md() {
+    padding: $font-size-base*3 0;
     background-position: 65% center;
+    height: auto;
   }
 
   .inner {
