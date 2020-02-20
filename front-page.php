@@ -105,6 +105,16 @@ if (get_field('flower_level', get_the_ID())) {
 </div>
 </section>
 
+<section id="other-flowers" class="sec bg-gray-a">
+<div class="wrap">
+<?php if ($lang_flag): ?>
+<h2 class="ttl2 txt-c"><span class="color-sky d-block">いま見頃の花</span><span>SEASONAL FLOWERS</span></h2>
+<?php else: ?>
+<h2 class="ttl2 txt-c"><span class="color-sky d-block">SEASONAL FLOWERS</span></h2>
+<?php endif; ?>
+</div>
+</section>
+
 <section id="new-posts" class="sec">
 <div class="wrap">
 <?php if ($lang_flag): ?>
