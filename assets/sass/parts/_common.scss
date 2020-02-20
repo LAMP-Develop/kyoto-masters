@@ -31,9 +31,9 @@ input:focus {
 
 .sec {
   box-sizing: border-box;
-  padding: $font-size-base*3 0;
+  padding: $font-size-base*4 0;
   @include media-xlg() {
-    padding: $font-size-base*2 0;
+    padding: $font-size-base*3 0;
   }
 }
 
