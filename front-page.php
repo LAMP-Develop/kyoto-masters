@@ -21,7 +21,7 @@ if ($lang === 'en') {
     $migoro_str = '例年の見頃';
 }
 get_header(); ?>
-<section id="mv" class="sec">
+<section id="mv">
 <div class="wrap">
 <div class="inner">
 <h2 class="mincho w-normal"><?php echo $ttl; ?></h2>
