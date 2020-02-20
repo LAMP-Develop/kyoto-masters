@@ -26,9 +26,9 @@ if ($lang === 'en') {
 <ul class="popular-posts">
 <?php
 $args = get_popular_args('weekly', '5');
+$no = 1;
 query_posts($args);
 while (have_posts()): the_post();
-$no = 1;
 $ttl = get_the_title();
 $permalink = get_the_permalink();
 $comment = get_comments_number(get_the_ID());
