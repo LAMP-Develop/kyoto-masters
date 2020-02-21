@@ -1,5 +1,7 @@
 .slider-nav {
   .slick-slide {
+    cursor: pointer;
+
     > div {
       position: relative;
       overflow: hidden;

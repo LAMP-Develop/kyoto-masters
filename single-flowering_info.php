@@ -63,7 +63,7 @@ for ($j=1; $j <= 5; $j++) {
 <div id="single-wrap" class="wrap main-wrap">
 <article id="main-content" class="post-main">
 <!-- 画像 -->
-<div class="slider-for i-catch">
+<div class="slider-for">
 <img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x,<?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
 <?php foreach ($pictures as $key => $pic): ?>
 <img src="<?php echo $pic; ?>" alt="<?php echo $t; ?>の桜">
