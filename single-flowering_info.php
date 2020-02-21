@@ -101,43 +101,43 @@ for ($j=1; $j <= 5; $j++) {
 <table>
 <tbody>
 <?php if(get_field('build-name')): ?>
-<tr><th>施設名</th>
+<tr><th><?php echo get_field_object('build-name')['label']; ?></th>
 <td><?php the_field('build-name'); ?></td></tr>
 <?php endif; ?>
 <?php if(get_field('address')): ?>
-<tr><th>住所</th>
+<tr><th><?php echo get_field_object('address')['label']; ?></th>
 <td><?php the_field('address'); ?></td></tr>
 <?php endif; ?>
 <?php if(get_field('tell')): ?>
-<tr><th>電話番号</th>
+<tr><th><?php echo get_field_object('tell')['label']; ?></th>
 <td><?php the_field('tell'); ?></td></tr>
 <?php endif; ?>
 <?php if(get_field('station')): ?>
-<tr><th>最寄り駅</th>
+<tr><th><?php echo get_field_object('station')['label']; ?></th>
 <td><?php the_field('station'); ?></td></tr>
 <?php endif; ?>
 <?php if(get_field('url')): ?>
-<tr><th>URL</th>
+<tr><th><?php echo get_field_object('url')['label']; ?></th>
 <td><?php the_field('url'); ?></td></tr>
 <?php endif; ?>
 <?php if(get_field('bas')): ?>
-<tr><th>最寄りバス停</th>
+<tr><th><?php echo get_field_object('bas')['label']; ?></th>
 <td><?php the_field('bas'); ?></td></tr>
 <?php endif; ?>
 <?php if(get_field('time')): ?>
-<tr><th>営業時間</th>
+<tr><th><?php echo get_field_object('time')['label']; ?></th>
 <td><?php the_field('time'); ?></td></tr>
 <?php endif; ?>
 <?php if(get_field('holiday')): ?>
-<tr><th>定休日</th>
+<tr><th><?php echo get_field_object('holiday')['label']; ?></th>
 <td><?php the_field('holiday'); ?></td></tr>
 <?php endif; ?>
 <?php if(get_field('money')): ?>
-<tr><th>入場料</th>
+<tr><th><?php echo get_field_object('money')['label']; ?></th>
 <td><?php the_field('money'); ?></td></tr>
 <?php endif; ?>
 <?php if(get_field('other')): ?>
-<tr><th>備考</th>
+<tr><th><?php echo get_field_object('other')['label']; ?></th>
 <td><?php the_field('other'); ?></td></tr>
 <?php endif; ?>
 </tbody>
