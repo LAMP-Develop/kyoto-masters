@@ -96,8 +96,6 @@ for ($j=1; $j <= 5; $j++) {
 <div class="post-inner mb-3">
 <?php the_content(); ?>
 </div>
-<!-- CTA -->
-<?php get_template_part('templates/cta-mk'); ?>
 <div class="post-inner mb-3">
 <!-- 施設概要 -->
 <table>
@@ -144,13 +142,12 @@ for ($j=1; $j <= 5; $j++) {
 <?php endif; ?>
 </tbody>
 </table>
-
+<!-- GoogleMap -->
 <?php if (get_field('geocode')): ?>
 <div class="gmap">
 <iframe src="https://www.google.com/maps?q=<?php echo get_field('geocode'); ?>&hl=jp&output=embed"></iframe>
 </div>
 <?php endif; ?>
-
 </div>
 
 <?php if ($tags != ''): ?>
@@ -165,6 +162,9 @@ for ($j=1; $j <= 5; $j++) {
 </ul>
 </div>
 <?php endif; ?>
+
+<!-- CTA -->
+<?php get_template_part('templates/cta-mk'); ?>
 
 <div class="sns-share mt-3 mb-3">
 <p class="mb-1 txt-c sns-share-str">この記事が気に入ったら<span>SNSでシェアしよう！</span></p>

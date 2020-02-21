@@ -1,13 +1,13 @@
 #breadcrumbs {
-  max-width: 1100px;
+  max-width: $breakpoint-xlg;
   margin: 0 auto;
-  padding-top: 1rem;
-  font-size: 0.8rem;
+  padding-top: $font-size-base*1;
+  font-size: $font-size-base*0.8;
   color: #666;
   @include media-lg() {
     max-width: 100%;
     box-sizing: border-box;
-    padding: 0 15px;
-    font-size: 0.6rem;
+    padding: 0 $font-size-base;
+    font-size: $font-size-base*0.6;
   }
 }

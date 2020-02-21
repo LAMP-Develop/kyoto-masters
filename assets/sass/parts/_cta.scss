@@ -19,10 +19,9 @@
       }
 
       .img {
-        width: 35%;
+        width: 40%;
         @include media-md() {
           display: none;
-          width: 100%;
         }
 
         img {
