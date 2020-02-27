@@ -179,9 +179,9 @@ for ($j=1; $j <= 5; $j++) {
 
 <section id="relation-post">
 <?php if ($lang_flag): ?>
-<h3 class="ttl3">関連記事</h3>
+<h3 class="ttl3">周辺情報</h3>
 <?php else: ?>
-<h3 class="ttl3">Related post</h3>
+<h3 class="ttl3">Nearby information</h3>
 <?php endif; ?>
 <ul class="post-list">
 <?php
