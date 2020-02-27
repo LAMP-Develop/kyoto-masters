@@ -126,7 +126,11 @@ $category = get_the_category();
 </div>
 
 <div class="sns-share mt-3 mb-3">
+<?php if ($lang_flag): ?>
 <p class="mb-1 txt-c sns-share-str">この記事が気に入ったら<span>SNSでシェアしよう！</span></p>
+<?php else: ?>
+<p class="mb-1 txt-c sns-share-str">If you like this post<span>Let's share！</span></p>
+<?php endif; ?>
 <ul class="txt-c">
 <li class="fb">
 <a href="https://www.facebook.com/sharer.php?src=bm&u=<?php echo $p; ?>&t=<?php echo $t; ?>" target="_blank">
