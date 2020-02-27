@@ -34,6 +34,7 @@ if ($lang === 'en') {
 $args = [
     'orderby' => 'name',
     'orderby' => 'ASC',
+    'parent' => '32',
 ];
 $terms = get_terms('flowering_info_cat', $args);
 foreach ($terms as $key => $term):
