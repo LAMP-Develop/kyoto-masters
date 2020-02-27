@@ -28,9 +28,9 @@ get_header();
 <div class="wrap main-wrap">
 <section id="main-content">
 <?php if ($lang_flag): ?>
-<h2 class="ttlcat">すべての開花情報</h2>
+<h2 class="ttlcat">桜の開花情報</h2>
 <?php else: ?>
-<h2 class="ttlcat">All flowering info</h2>
+<h2 class="ttlcat">Cherry blossoming information.</h2>
 <?php endif; ?>
 <?php
 $terms = get_terms('flowering_info_cat');
@@ -41,6 +41,8 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 if (have_posts()): while (have_posts()): the_post();
 $p = get_the_permalink();
 $t = get_the_title();
+$terms = get_the_terms(get_the_ID(), 'flowering_info_cat')[0];
+$term_name = $terms->name;
 $time = get_the_time('Y-m-d');
 if (has_post_thumbnail()) {
     $i = get_the_post_thumbnail_url(get_the_ID(), 'medium');
@@ -71,7 +73,7 @@ if (get_field('flower_level', get_the_ID())) {
 <span><?php echo $flower_level['label']; ?></span>
 </div>
 <div class="migoro">
-<span><?php echo $migoro_str; ?><br><?php echo $migoro; ?></span>
+<span><i class="fas fa-map-marker-alt"></i> <?php echo $term_name; ?></span>
 </div>
 </div>
 <div class="txt">
@@ -92,7 +94,7 @@ if (get_field('flower_level', get_the_ID())) {
 } ?>
 </section>
 <!-- サイドバー -->
-<?php get_sidebar(); ?>
+<?php get_sidebar('flower'); ?>
 </div>
 </section>
 <?php get_footer();

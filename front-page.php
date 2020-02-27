@@ -56,6 +56,8 @@ query_posts($args);
 while (have_posts()): the_post();
 $p = get_the_permalink();
 $t = get_the_title();
+$terms = get_the_terms(get_the_ID(), 'flowering_info_cat')[0];
+$term_name = $terms->name;
 if (has_post_thumbnail()) {
     $i = get_the_post_thumbnail_url(get_the_ID(), 'large');
     $i_l = get_the_post_thumbnail_url(get_the_ID(), 'full');
@@ -85,7 +87,7 @@ if (get_field('flower_level', get_the_ID())) {
 <span><?php echo $flower_level['label']; ?></span>
 </div>
 <div class="migoro">
-<span><?php echo $migoro_str; ?><br><?php echo $migoro; ?></span>
+<span><i class="fas fa-map-marker-alt"></i> <?php echo $term_name; ?></span>
 </div>
 </div>
 <div class="txt">
@@ -108,10 +110,29 @@ if (get_field('flower_level', get_the_ID())) {
 <section id="other-flowers" class="sec bg-gray-a">
 <div class="wrap">
 <?php if ($lang_flag): ?>
-<h2 class="ttl2"><span class="color-sky d-block">いま見頃の花</span><span>SEASONAL FLOWERS</span></h2>
+<h2 class="ttl2 txt-c"><span class="color-sky d-block">いま見頃の花</span><span>SEASONAL FLOWERS</span></h2>
 <?php else: ?>
-<h2 class="ttl2"><span class="color-sky d-block">SEASONAL FLOWERS</span></h2>
+<h2 class="ttl2 txt-c"><span class="color-sky d-block">SEASONAL FLOWERS</span></h2>
 <?php endif; ?>
+<ul class="txt-c tag-list">
+<?php
+$now_month = (int)date('n');
+$args = [
+    'hide_empty' => false,
+];
+$terms = get_terms('other_flowers_cat', $args);
+foreach ($terms as $term):
+    $term_id = 'other_flowers_cat_'.$term->term_id;
+    $best_month = (int)get_field('best_month', $term_id);
+    if ($best_month === 0 || $now_month !== $best_month) {
+        continue;
+    }
+    $flower_name = $term->name;
+    $flower_slug = get_term_link($term->slug, 'other_flowers_cat');
+?>
+<li class="mb-05"><a href="<?php echo $flower_slug; ?>"><?php echo $flower_name; ?></a></li>
+<?php endforeach; ?>
+</ul>
 </div>
 </section>
 

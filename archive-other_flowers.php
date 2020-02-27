@@ -6,7 +6,7 @@ get_header();
 <section class="sec">
 <div class="wrap main-wrap">
 <section id="main-content">
-<h2 class="ttlcat">キーワード：<?php single_cat_title(); ?></h2>
+<h2 class="ttlcat">他の見頃の花</h2>
 
 <ul class="post-list">
 <?php

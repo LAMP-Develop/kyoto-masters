@@ -91,7 +91,7 @@ function nlink_scode($atts)
 add_shortcode('nlink', 'nlink_scode');
 
 //popular post からquery_posts生成
-function get_popular_args($range= "weekly", $limit = 5)
+function get_popular_args($range = "weekly", $limit = 5)
 {
     $shortcode = '[wpp';
     $atts = '
@@ -101,8 +101,7 @@ function get_popular_args($range= "weekly", $limit = 5)
           order_by="views"
           post_type="post"
           stats_comments=0
-          stats_views=1
-            ';
+          stats_views=1';
     $atts_2 = ' range='. $range;
     $atts_3 = ' limit='. $limit;
     $shortcode .= ' ' . $atts . $atts_2 . $atts_3 . ']';
@@ -114,11 +113,41 @@ function get_popular_args($range= "weekly", $limit = 5)
             array_push($ranked_post_ids, intval($id_string));
         }
     }
-    $args = array(
-    'posts_per_page' => $limit,
-    'post__in' => $ranked_post_ids,
-    'orderby' => 'post__in'
-  );
+    $args = [
+        'posts_per_page' => $limit,
+        'post__in' => $ranked_post_ids,
+        'orderby' => 'post__in'
+    ];
 
+    return $args;
+}
+
+function get_popular_blooming($range = "weekly", $limit = 5)
+{
+    $shortcode = '[wpp';
+    $atts = '
+          post_html="{url},"
+          wpp_start=""
+          wpp_end=""
+          order_by="views"
+          post_type="flowering_info"
+          stats_comments=0
+          stats_views=1';
+    $atts_2 = ' range='. $range;
+    $atts_3 = ' limit='. $limit;
+    $shortcode .= ' ' . $atts . $atts_2 . $atts_3 . ']';
+    $result = explode(",", strip_tags(do_shortcode($shortcode)));
+    $ranked_post_ids = array();
+    foreach ($result as $_url) {
+        if (!empty($_url) && trim($_url) != '') {
+            $id_string = url_to_postid($_url);
+            array_push($ranked_post_ids, intval($id_string));
+        }
+    }
+    $args = [
+        'posts_per_page' => $limit,
+        'post__in' => $ranked_post_ids,
+        'orderby' => 'post__in'
+    ];
     return $args;
 }

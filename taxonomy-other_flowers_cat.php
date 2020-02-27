@@ -6,7 +6,7 @@ get_header();
 <section class="sec">
 <div class="wrap main-wrap">
 <section id="main-content">
-<h2 class="ttlcat">キーワード：<?php single_cat_title(); ?></h2>
+<h2 class="ttlcat">今”<?php single_cat_title(); ?>”が見頃のスポット</h2>
 
 <ul class="post-list">
 <?php
@@ -53,7 +53,7 @@ $category = get_the_category();
 } ?>
 </section>
 <!-- サイドバー -->
-<?php get_sidebar(); ?>
+<?php get_sidebar('flower'); ?>
 </div>
 </section>
 <?php get_footer();

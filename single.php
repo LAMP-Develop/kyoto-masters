@@ -2,15 +2,6 @@
 $home = esc_url(home_url());
 $wp_url = get_template_directory_uri();
 get_header();
-
-$lang = ICL_LANGUAGE_CODE;
-if ($lang === 'en') {
-} elseif ($lang === 'ko') {
-} elseif ($lang === 'zh-hans') {
-} elseif ($lang === 'zh-hant') {
-} else {
-}
-
 if (have_posts()): the_post();
 
 // 記事情報
@@ -27,8 +18,6 @@ if (has_post_thumbnail()) {
 }
 // カテゴリー
 $category = get_the_category();
-// タグ
-$tags = get_the_tags();
 ?>
 <section class="sec">
 <div id="single-wrap" class="wrap main-wrap">
@@ -109,21 +98,7 @@ $tags = get_the_tags();
 <iframe src="https://www.google.com/maps?q=<?php echo get_field('geocode'); ?>&hl=jp&output=embed"></iframe>
 </div>
 <?php endif; ?>
-
 </div>
-
-<?php if ($tags != ''): ?>
-<div class="single-tags">
-<h3>この記事のタグ</h3>
-<ul>
-<?php foreach ($tags as $key => $tag): ?>
-<li>
-<a href="<?php echo $home.'/tag/'.$tag->slug; ?>"><i class="fas fa-tag"></i> <?php echo $tag->name; ?></a>
-</li>
-<?php endforeach; ?>
-</ul>
-</div>
-<?php endif; ?>
 
 <div class="sns-share mt-3 mb-3">
 <p class="mb-1 txt-c sns-share-str">この記事が気に入ったら<span>SNSでシェアしよう！</span></p>

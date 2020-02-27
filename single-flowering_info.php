@@ -34,6 +34,8 @@ $t = get_the_title();
 $p = get_the_permalink();
 $id = get_the_ID();
 $time = get_the_modified_time('Y-m-d');
+$terms = get_the_terms($id, 'flowering_info_cat')[0];
+$term_name = $terms->name;
 if (has_post_thumbnail()) {
     $i = get_the_post_thumbnail_url(get_the_ID(), 'large');
     $i_l = get_the_post_thumbnail_url(get_the_ID(), 'full');
@@ -79,6 +81,7 @@ for ($j=1; $j <= 5; $j++) {
 <h2 class="postttl"><?php echo $t; ?></h2>
 <div class="meta">
 <time class="color-sky" datetime="<?php echo $time; ?>"><?php echo $modified_time; ?>：<?php the_modified_time('Y.m.d'); ?></time>
+<span class="ml-05"><i class="fas fa-map-marker-alt"></i> <?php echo $term_name; ?></span>
 </div>
 <!-- 開花情報 -->
 <div class="post-flowering">
@@ -149,19 +152,6 @@ for ($j=1; $j <= 5; $j++) {
 </div>
 <?php endif; ?>
 </div>
-
-<?php if ($tags != ''): ?>
-<div class="single-tags">
-<h3>この記事のタグ</h3>
-<ul>
-<?php foreach ($tags as $key => $tag): ?>
-<li>
-<a href="<?php echo $home.'/tag/'.$tag->slug; ?>"><i class="fas fa-tag"></i> <?php echo $tag->name; ?></a>
-</li>
-<?php endforeach; ?>
-</ul>
-</div>
-<?php endif; ?>
 
 <!-- CTA -->
 <?php get_template_part('templates/cta-mk'); ?>
@@ -246,7 +236,7 @@ if (get_field('flower_level', get_the_ID())) {
 </section>
 </article>
 <!-- サイドバー -->
-<?php get_sidebar(); ?>
+<?php get_sidebar('flower'); ?>
 </div>
 </section>
 <?php endif; get_footer();

@@ -1,6 +1,18 @@
 <?php
 $home = esc_url(home_url());
 $wp_url = get_template_directory_uri();
+$lang = ICL_LANGUAGE_CODE;
+if ($lang === 'en') {
+    $flowering = 'Blooming information';
+} elseif ($lang === 'ko') {
+    $flowering = '개화 정보';
+} elseif ($lang === 'zh-hans') {
+    $flowering = '开花信息';
+} elseif ($lang === 'zh-hant') {
+    $flowering = '開花信息';
+} else {
+    $flowering = '開花情報';
+}
 ?>
 <!DOCTYPE HTML>
 <html lang="ja">
@@ -53,6 +65,9 @@ $languages = icl_get_languages('skip_missing=0&orderby=id&order=desc&link_empty_
 </button>
 <nav class="sp-only sp-mneu drawer-nav bg-sky color-white" role="navigation">
 <ul class="drawer-menu">
+<li class="cat-link">
+<a class="drawer-menu-item" href="<?php echo $home; ?>/flowering-info/"><?php echo $flowering; ?></a>
+</li>
 <?php
 $args = [
   'orderby' => 'ID',
@@ -67,10 +82,9 @@ foreach ($categories as $kye => $category) { ?>
 </a>
 </li>
 <?php } ?>
-<li class="drawer-menu-item mt-2"><a class="drawer-menu-item" href="<?php echo $home; ?>">トップ</a></li>
-<li class="drawer-menu-item"><a class="drawer-menu-item" href="https://lamp.jp" target="_blank">運営会社</a></li>
-<!-- <li class="drawer-menu-item"><a class="drawer-menu-item" href="<?php echo $home; ?>/site-map/">サイトマップ</a></li> -->
-<li class="drawer-menu-item"><a class="drawer-menu-item" href="<?php echo $home; ?>/privacy-policy/">プライバシーポリシー</a></li>
+<li class="drawer-menu-item mt-2"><a class="drawer-menu-item" href="<?php echo $home; ?>">Top</a></li>
+<li class="drawer-menu-item"><a class="drawer-menu-item" href="https://lamp.jp" target="_blank">Company</a></li>
+<li class="drawer-menu-item"><a class="drawer-menu-item" href="<?php echo $home; ?>/privacy-policy/">Privacypolicy</a></li>
 <hr class="mb-2">
 <?php foreach ($languages as $key => $val): ?>
 <li class="drawer-menu-item">
