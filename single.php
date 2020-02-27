@@ -165,8 +165,8 @@ $args = [
   'category__in' => $catkwds,
   'orderby' => 'rand',
 ];
-$posts = get_posts($args);
-foreach ($posts as $post): setup_postdata($post);
+query_posts($args);
+while (have_posts()): the_post();
 $p = get_the_permalink();
 $t = get_the_title();
 $time = get_the_time('Y-m-d');
@@ -192,7 +192,7 @@ $category = get_the_category();
 </div>
 </a>
 </li>
-<?php endforeach; wp_reset_postdata(); ?>
+<?php endwhile; wp_reset_query(); ?>
 </ul>
 </section>
 </article>
