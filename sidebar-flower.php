@@ -3,25 +3,71 @@ $home = esc_url(home_url());
 $wp_url = get_template_directory_uri();
 $lang = ICL_LANGUAGE_CODE;
 if ($lang === 'en') {
-    $others = 'Other flowers blooming forecast';
+    $others = 'Seasonal other flowers';
     $rank = 'Access Ranking';
+    $area = 'Search from the area';
 } elseif ($lang === 'ko') {
-    $others = '다른 꽃 피는 예측';
+    $others = '계절 다른 꽃';
     $rank = '액세스 랭킹';
+    $area = '지역에서 찾는다';
 } elseif ($lang === 'zh-hans') {
-    $others = '其他鲜花盛开预测';
+    $others = '时令他人花';
     $rank = '访问排名';
+    $area = '按地区搜索';
 } elseif ($lang === 'zh-hant') {
-    $others = '其他鮮花盛開預測';
+    $others = '時令他人花';
     $rank = '訪問排名';
+    $area = '按地區搜索';
 } else {
     $others = 'いま見頃の花';
     $rank = '今週のアクセスランキング';
+    $area = 'エリアで絞る';
 }
 ?>
 
 <aside id="sidebar">
-
+<!-- sort -->
+<div class="inner">
+<h3><?php echo $area; ?></h3>
+<ul class="side-cat">
+<?php
+$args = [
+    'orderby' => 'name',
+    'orderby' => 'ASC',
+];
+$terms = get_terms('flowering_info_cat', $args);
+foreach ($terms as $key => $term):
+  $flower_name = $term->name;
+  $flower_slug = get_term_link($term->slug, 'flowering_info_cat');
+?>
+<li><a href="<?php echo $flower_slug; ?>"><?php echo $flower_name; ?></a></li>
+<?php endforeach; ?>
+</ul>
+</div>
+<!-- others -->
+<div class="inner">
+<h3><?php echo $others; ?></h3>
+<ul class="tag-list">
+<?php
+$now_month = (int)date('n');
+$args = [
+    'hide_empty' => false,
+];
+$terms = get_terms('other_flowers_cat', $args);
+foreach ($terms as $term):
+    $term_id = 'other_flowers_cat_'.$term->term_id;
+    $best_month = (int)get_field('best_month', $term_id);
+    if ($best_month === 0 || $now_month !== $best_month) {
+        continue;
+    }
+    $flower_name = $term->name;
+    $flower_slug = get_term_link($term->slug, 'other_flowers_cat');
+?>
+<li class="mb-05"><a href="<?php echo $flower_slug; ?>"><?php echo $flower_name; ?></a></li>
+<?php endforeach; ?>
+</ul>
+</div>
+<!-- ranking -->
 <div class="inner">
 <h3><?php echo $rank; ?></h3>
 <ul class="popular-posts">
@@ -55,28 +101,4 @@ if (has_post_thumbnail()) {
 <?php $no++; endwhile; wp_reset_query(); ?>
 </ul>
 </div>
-
-<div class="inner">
-<h3><?php echo $others; ?></h3>
-<ul class="tag-list">
-<?php
-$now_month = (int)date('n');
-$args = [
-    'hide_empty' => false,
-];
-$terms = get_terms('other_flowers_cat', $args);
-foreach ($terms as $term):
-    $term_id = 'other_flowers_cat_'.$term->term_id;
-    $best_month = (int)get_field('best_month', $term_id);
-    if ($best_month === 0 || $now_month !== $best_month) {
-        continue;
-    }
-    $flower_name = $term->name;
-    $flower_slug = get_term_link($term->slug, 'other_flowers_cat');
-?>
-<li class="mb-05"><a href="<?php echo $flower_slug; ?>"><?php echo $flower_name; ?></a></li>
-<?php endforeach; ?>
-</ul>
-</div>
-
 </aside>

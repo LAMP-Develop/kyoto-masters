@@ -179,59 +179,45 @@ for ($j=1; $j <= 5; $j++) {
 
 <section id="relation-post">
 <?php if ($lang_flag): ?>
-<h3 class="ttl3">他の開花情報</h3>
+<h3 class="ttl3">関連記事</h3>
 <?php else: ?>
-<h3 class="ttl3">Others</h3>
+<h3 class="ttl3">Related post</h3>
 <?php endif; ?>
 <ul class="post-list">
 <?php
 $args = [
-  'post_type' => 'flowering_info',
+  'post_type' => 'post',
   'posts_per_page' => '4',
-  'orderby' => 'rand'
+  'orderby' => 'rand',
 ];
-query_posts($args);
-while (have_posts()): the_post();
+$posts = get_posts($args);
+foreach ($posts as $post): setup_postdata($post);
 $p = get_the_permalink();
 $t = get_the_title();
+$time = get_the_time('Y-m-d');
 if (has_post_thumbnail()) {
-    $i = get_the_post_thumbnail_url(get_the_ID(), 'large');
-    $i_l = get_the_post_thumbnail_url(get_the_ID(), 'full');
+    $i = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+    $i_l = get_the_post_thumbnail_url(get_the_ID(), 'large');
 } else {
     $i = $wp_url.'/lib/images/no-img.png';
     $i_l = $wp_url.'/lib/images/no-img.png';
 }
-if (get_field('migoro', get_the_ID())) {
-    $migoro = get_field('migoro', get_the_ID());
-} else {
-    $migoro = '';
-}
-if (get_field('flower_level', get_the_ID())) {
-    $flower_level = get_field('flower_level', get_the_ID());
-} else {
-    $flower_level = '';
-}
+$category = get_the_category();
 ?>
 <li>
-<a class="relative" href="<?php echo $p; ?>">
+<a href="<?php echo $p; ?>">
 <div class="post-thumbnail">
 <img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x,<?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
 </div>
-<div class="flower-info">
-<div class="flower">
-<span><img src="<?php echo $wp_url; ?>/lib/images/sakura_<?php echo $flower_level['value']; ?>.svg" alt="桜の開花情報"></span>
-<span><?php echo $flower_level['label']; ?></span>
-</div>
-<div class="migoro">
-<span><?php echo $migoro_str; ?><br><?php echo $migoro; ?></span>
-</div>
-</div>
 <div class="txt">
-<h3 class="mincho txt-c"><?php echo $t; ?></h3>
+<?php foreach ($category as $key => $val): ?>
+<span class="d-i-block color-white bg-sky mr-05"><?php echo $val->cat_name; ?></span>
+<?php endforeach; ?>
+<h3><?php echo $t; ?></h3>
 </div>
 </a>
 </li>
-<?php endwhile; wp_reset_query(); ?>
+<?php endforeach; wp_reset_postdata(); ?>
 </ul>
 </section>
 </article>

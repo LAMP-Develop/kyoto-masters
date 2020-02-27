@@ -2,8 +2,33 @@
 $home = esc_url(home_url());
 $wp_url = get_template_directory_uri();
 get_header();
-if (have_posts()): the_post();
 
+$lang = ICL_LANGUAGE_CODE;
+$lang_flag = false;
+if ($lang === 'en') {
+    $modified_time = 'Updated date';
+    $migoro_str = 'Best time';
+    $kaika = 'Flowering status';
+} elseif ($lang === 'ko') {
+    $modified_time = '업데이트 날짜';
+    $migoro_str = '예년의 절정';
+    $kaika = '개화 상황';
+} elseif ($lang === 'zh-hans') {
+    $modified_time = '更新日期';
+    $migoro_str = '一年中最好的时间';
+    $kaika = '开花状况';
+} elseif ($lang === 'zh-hant') {
+    $modified_time = '更新日期';
+    $migoro_str = '一年中最好的時間';
+    $kaika = '開花狀況';
+} else {
+    $modified_time = '更新日';
+    $migoro_str = '例年の見頃';
+    $kaika = '開花状況';
+    $lang_flag = true;
+}
+
+if (have_posts()): the_post();
 // 記事情報
 $t = get_the_title();
 $p = get_the_permalink();
@@ -122,7 +147,11 @@ $category = get_the_category();
 </div>
 
 <section id="relation-post">
+<?php if ($lang_flag): ?>
 <h3 class="ttl3">関連記事</h3>
+<?php else: ?>
+<h3 class="ttl3">Related post</h3>
+<?php endif; ?>
 <ul class="post-list">
 <?php
 $catkwds = [];

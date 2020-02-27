@@ -28,9 +28,9 @@ get_header();
 <div class="wrap main-wrap">
 <section id="main-content">
 <?php if ($lang_flag): ?>
-<h2 class="ttlcat">桜の開花情報</h2>
+<h2 class="ttlcat">全ての桜開花情報</h2>
 <?php else: ?>
-<h2 class="ttlcat">Cherry blossoming information.</h2>
+<h2 class="ttlcat">All sakura blossoming information</h2>
 <?php endif; ?>
 <?php
 $terms = get_terms('flowering_info_cat');

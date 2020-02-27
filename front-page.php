@@ -40,9 +40,9 @@ get_header(); ?>
 <section id="flowering" class="sec">
 <div class="wrap">
 <?php if ($lang_flag): ?>
-<h2 class="ttl2 txt-c"><span class="color-sky d-block">開花情報</span><span>FLOWERING INFO</span></h2>
+<h2 class="ttl2 txt-c"><span class="color-sky d-block">桜の開花情報</span><span>KYOTO SAKURA INFOMATION</span></h2>
 <?php else: ?>
-<h2 class="ttl2 txt-c"><span class="color-sky d-block">FLOWERING INFO</span></h2>
+<h2 class="ttl2 txt-c"><span class="color-sky d-block">KYOTO SAKURA INFOMATION</span></h2>
 <?php endif; ?>
 <ul class="post-list flowering-list mb-2">
 <?php
@@ -99,7 +99,7 @@ if (get_field('flower_level', get_the_ID())) {
 </ul>
 <div class="txt-c">
 <?php if ($lang_flag): ?>
-<a href="<?php echo $home; ?>/flowering-info/" class="btn">すべての開花情報を見る</a>
+<a href="<?php echo $home; ?>/flowering-info/" class="btn">もっと見る</a>
 <?php else: ?>
 <a href="<?php echo $home; ?>/flowering-info/" class="btn">More</a>
 <?php endif; ?>
@@ -110,9 +110,9 @@ if (get_field('flower_level', get_the_ID())) {
 <section id="other-flowers" class="sec bg-gray-a">
 <div class="wrap">
 <?php if ($lang_flag): ?>
-<h2 class="ttl2 txt-c"><span class="color-sky d-block">いま見頃の花</span><span>SEASONAL FLOWERS</span></h2>
+<h2 class="ttl2 txt-c"><span class="color-sky d-block">いま見頃の花</span><span>SEASONAL OTHER FLOWERS</span></h2>
 <?php else: ?>
-<h2 class="ttl2 txt-c"><span class="color-sky d-block">SEASONAL FLOWERS</span></h2>
+<h2 class="ttl2 txt-c"><span class="color-sky d-block">SEASONAL OTHER FLOWERS</span></h2>
 <?php endif; ?>
 <ul class="txt-c tag-list">
 <?php
