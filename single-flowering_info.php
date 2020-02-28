@@ -113,7 +113,7 @@ for ($j=1; $j <= 5; $j++) {
 <?php endif; ?>
 <?php if(get_field('tell')): ?>
 <tr><th><?php echo get_field_object('tell')['label']; ?></th>
-<td><?php the_field('tell'); ?></td></tr>
+<td><a href="tel:<?php the_field('tell'); ?>"><?php the_field('tell'); ?></a></td></tr>
 <?php endif; ?>
 <?php if(get_field('station')): ?>
 <tr><th><?php echo get_field_object('station')['label']; ?></th>
@@ -121,7 +121,7 @@ for ($j=1; $j <= 5; $j++) {
 <?php endif; ?>
 <?php if(get_field('url')): ?>
 <tr><th><?php echo get_field_object('url')['label']; ?></th>
-<td><?php the_field('url'); ?></td></tr>
+<td><a href="<?php the_field('url'); ?>" target="_blank"><?php the_field('url'); ?></a></td></tr>
 <?php endif; ?>
 <?php if(get_field('bas')): ?>
 <tr><th><?php echo get_field_object('bas')['label']; ?></th>
