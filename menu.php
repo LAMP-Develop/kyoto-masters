@@ -17,6 +17,7 @@ if ($lang === 'en') {
 <nav class="pc-nav bg-sky pc-only">
 <div class="wrap">
 <ul>
+<li><a href="<?php echo $home; ?>/flowering-info/"><?php echo $flowering; ?></a></li>
 <?php
 $args = [
   'orderby' => 'ID',
@@ -27,7 +28,6 @@ $categories = get_categories($args);
 foreach ($categories as $category): ?>
 <li><a href="<?php echo get_category_link($category->term_id); ?>"><?php echo $category->name; ?></a></li>
 <?php endforeach; ?>
-<li><a href="<?php echo $home; ?>/flowering-info/"><?php echo $flowering; ?></a></li>
 </ul>
 </div>
 </nav>

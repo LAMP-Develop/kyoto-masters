@@ -4,20 +4,20 @@ $wp_url = get_template_directory_uri();
 $lang = ICL_LANGUAGE_CODE;
 $lang_flag = false;
 if ($lang === 'en') {
-    $ttl = 'Media that delivers information on Kyoto';
+    $ttl = 'Delivering the now of Kyoto to the world.';
     $migoro_str = 'Best time';
 } elseif ($lang === 'ko') {
-    $ttl = '교토의 정보 전달 매체';
+    $ttl = '교토의 현재를 세계에 전달';
     $migoro_str = '예년의 절정';
 } elseif ($lang === 'zh-hans') {
-    $ttl = '传播京都信息的媒体';
+    $ttl = '向世界传达京都的现在';
     $migoro_str = '一年中最好的时间';
 } elseif ($lang === 'zh-hant') {
-    $ttl = '傳播京都信息的媒體';
+    $ttl = '向世界傳達京都的現在';
     $migoro_str = '一年中最好的時間';
 } else {
     $lang_flag = true;
-    $ttl = '京都の情報を届けるメディア';
+    $ttl = '京都の今を世界に届けるメディア';
     $migoro_str = '例年の見頃';
 }
 get_header(); ?>
@@ -28,10 +28,7 @@ get_header(); ?>
 <?php get_search_form(); ?>
 <div class="search-tag mt-2">
 <span class="mr-1">HOT WORD</span>
-<a href="#" class="hot-word">タグ名</a>
-<a href="#" class="hot-word">タグ名</a>
-<a href="#" class="hot-word">タグ名</a>
-<a href="#" class="hot-word">タグ名</a>
+<a href="<?php echo $home; ?>/flowering-info/" class="hot-word">桜</a>
 </div>
 </div>
 </div>
@@ -107,36 +104,7 @@ if (get_field('flower_level', get_the_ID())) {
 </div>
 </section>
 
-<section id="other-flowers" class="sec bg-gray-a">
-<div class="wrap">
-<?php if ($lang_flag): ?>
-<h2 class="ttl2 txt-c"><span class="color-sky d-block">いま見頃の花</span><span>SEASONAL OTHER FLOWERS</span></h2>
-<?php else: ?>
-<h2 class="ttl2 txt-c"><span class="color-sky d-block">SEASONAL OTHER FLOWERS</span></h2>
-<?php endif; ?>
-<ul class="txt-c tag-list">
-<?php
-$now_month = (int)date('n');
-$args = [
-    'hide_empty' => false,
-];
-$terms = get_terms('other_flowers_cat', $args);
-foreach ($terms as $term):
-    $term_id = 'other_flowers_cat_'.$term->term_id;
-    $best_month = (int)get_field('best_month', $term_id);
-    if ($best_month === 0 || $now_month !== $best_month) {
-        continue;
-    }
-    $flower_name = $term->name;
-    $flower_slug = get_term_link($term->slug, 'other_flowers_cat');
-?>
-<li class="mb-05"><a href="<?php echo $flower_slug; ?>"><?php echo $flower_name; ?></a></li>
-<?php endforeach; ?>
-</ul>
-</div>
-</section>
-
-<section id="new-posts" class="sec">
+<section id="new-posts" class="sec bg-gray-a">
 <div class="wrap">
 <?php if ($lang_flag): ?>
 <h2 class="ttl2 txt-c"><span class="color-sky d-block">新着記事</span><span>RECENT POSTS</span></h2>
@@ -146,7 +114,7 @@ foreach ($terms as $term):
 <ul class="post-list mb-2">
 <?php
 $args = [
-  'posts_per_page' => 12,
+  'posts_per_page' => 3,
   'orderby' => 'date',
   'order' => 'DESC'
 ];
@@ -184,9 +152,75 @@ $category = get_the_category();
 </ul>
 <div class="txt-c">
 <?php if ($lang_flag): ?>
-<a href="<?php echo $home; ?>/new-post/" class="btn">すべての記事記事を見る</a>
+<a href="<?php echo $home; ?>/new-post/" class="btn">もっと見る</a>
 <?php else: ?>
 <a href="<?php echo $home; ?>/new-post/" class="btn">More</a>
+<?php endif; ?>
+</div>
+</div>
+</section>
+
+<section id="other-flowers" class="sec">
+<div class="wrap">
+<?php if ($lang_flag): ?>
+<h2 class="ttl2 txt-c"><span class="color-sky d-block">いま見頃の花</span><span>SEASONAL OTHER FLOWERS</span></h2>
+<?php else: ?>
+<h2 class="ttl2 txt-c"><span class="color-sky d-block">SEASONAL OTHER FLOWERS</span></h2>
+<?php endif; ?>
+<ul class="post-list flowering-list mb-2">
+<?php
+$args = [
+  'posts_per_page' => 6,
+  'post_type' => 'other_flowers',
+  'orderby' => 'date',
+  'order' => 'DESC'
+];
+query_posts($args);
+while (have_posts()): the_post();
+$p = get_the_permalink();
+$t = get_the_title();
+$time = get_the_time('Y-m-d');
+if (has_post_thumbnail()) {
+    $i = get_the_post_thumbnail_url(get_the_ID(), 'large');
+    $i_l = get_the_post_thumbnail_url(get_the_ID(), 'full');
+} else {
+    $i = $wp_url.'/lib/images/no-img.png';
+    $i_l = $wp_url.'/lib/images/no-img.png';
+}
+$terms = get_the_terms(get_the_ID(), 'other_flowers_cat');
+$area_name = '';
+$flower_name = '';
+foreach ($terms as $key => $term) {
+    if ($term->parent) {
+        $area_name = $term->name;
+    } else {
+        $flower_name = $term->name;
+    }
+}
+?>
+<li>
+<a class="relative" href="<?php echo $p; ?>">
+<div class="post-thumbnail">
+<img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x,<?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
+</div>
+<div class="flower-info">
+<div class="flower"><span><?php echo $flower_name; ?></span></div>
+<div class="migoro">
+<span><i class="fas fa-map-marker-alt"></i> <?php echo $area_name; ?></span>
+</div>
+</div>
+<div class="txt">
+<h3 class="mincho"><?php echo $t; ?></h3>
+</div>
+</a>
+</li>
+<?php endwhile; wp_reset_query(); ?>
+</ul>
+<div class="txt-c">
+<?php if ($lang_flag): ?>
+<a href="<?php echo $home; ?>/otherflowers/" class="btn">もっと見る</a>
+<?php else: ?>
+<a href="<?php echo $home; ?>/otherflowers/" class="btn">More</a>
 <?php endif; ?>
 </div>
 </div>
