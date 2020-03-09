@@ -45,7 +45,7 @@ if (has_post_thumbnail()) {
     $i_l = $wp_url.'/lib/images/no-img-2.png';
 }
 ?>
-<li>
+<li class="search-post">
 <span class="mv-ribbon"><?php echo $type_name; ?></span>
 <a href="<?php echo $p; ?>">
 <div class="post-thumbnail">

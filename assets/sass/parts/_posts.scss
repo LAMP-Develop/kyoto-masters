@@ -19,6 +19,12 @@
       margin: 0 auto $font-size-base*2;
     }
 
+    &.search-post {
+      .txt {
+        padding-top: 0 !important;
+      }
+    }
+
     .post-thumbnail {
       position: relative;
       width: 100%;
