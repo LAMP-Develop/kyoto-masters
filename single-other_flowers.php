@@ -69,16 +69,15 @@ for ($j=1; $j <= 5; $j++) {
 </div>
 
 <!-- 開花情報 -->
-<div class="post-flowering">
+<div class="post-flowering mb-2">
 <div class="flowering">
 <span><?php echo $kaika; ?></span>
-<span><img src="<?php echo $wp_url; ?>/lib/images/sakura_<?php echo $flower_level['value']; ?>.svg" alt="桜の開花情報"></span>
-<span><?php echo $flower_level['label']; ?></span>
+<span>つぼみ</span>
 </div>
-<div class="migoro">
+<!-- <div class="migoro">
 <span><?php echo $migoro_str; ?></span>
 <span><?php echo $migoro; ?></span>
-</div>
+</div> -->
 </div>
 
 <h2 class="postttl"><?php echo $t; ?></h2>
