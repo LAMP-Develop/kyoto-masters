@@ -69,12 +69,16 @@ foreach ($terms as $val) {
       $terms_arr[] = $val->slug;
   }
 }
-$terms_arr = implode(',', $terms_arr);
-var_dump($terms_arr);
 $args = [
     'post_type' => 'other_flowers',
-    'taxonomy' => 'other_flowers_cat',
-    'term' => $terms_arr,
+    'tax_query' => [
+        [
+            'taxonomy' => 'other_flowers_cat',
+            'terms' => $terms_arr,
+            'field' => 'slug',
+            'operator' => 'IN',
+        ],
+    ],
     'posts_per_page' => 5,
 ]; ?>
 <ul class="popular-posts">
