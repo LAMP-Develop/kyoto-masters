@@ -28,31 +28,6 @@ if ($lang === 'en') {
 ?>
 
 <aside id="sidebar">
-<!-- sort -->
-<div class="inner">
-<h3><?php echo $area; ?></h3>
-<ul class="side-cat">
-<?php
-$args = [
-    'slug' => 'area',
-    'hide_empty' => 0,
-];
-$parent = get_terms('other_flowers_cat', $args);
-$args = [
-    'orderby' => 'name',
-    'orderby' => 'ASC',
-    'parent' => icl_object_id($parent[0]->term_id, 'other_flowers_cat', false)
-];
-$terms = get_terms('other_flowers_cat', $args);
-foreach ($terms as $key => $term):
-  $flower_name = $term->name;
-  $flower_slug = get_term_link($term->slug, 'other_flowers_cat');
-?>
-<li><a href="<?php echo $flower_slug; ?>"><?php echo $flower_name; ?></a></li>
-<?php endforeach; ?>
-</ul>
-</div>
-
 <!-- others_flower -->
 <div class="inner">
 <h3><?php echo $others; ?></h3>
@@ -127,6 +102,31 @@ if (has_post_thumbnail()) {
 </a>
 </li>
 <?php endwhile; wp_reset_query(); ?>
+</ul>
+</div>
+
+<!-- sort -->
+<div class="inner">
+<h3><?php echo $area; ?></h3>
+<ul class="side-cat">
+<?php
+$args = [
+    'slug' => 'area',
+    'hide_empty' => 0,
+];
+$parent = get_terms('other_flowers_cat', $args);
+$args = [
+    'orderby' => 'name',
+    'orderby' => 'ASC',
+    'parent' => icl_object_id($parent[0]->term_id, 'other_flowers_cat', false)
+];
+$terms = get_terms('other_flowers_cat', $args);
+foreach ($terms as $key => $term):
+  $flower_name = $term->name;
+  $flower_slug = get_term_link($term->slug, 'other_flowers_cat');
+?>
+<li><a href="<?php echo $flower_slug; ?>"><?php echo $flower_name; ?></a></li>
+<?php endforeach; ?>
 </ul>
 </div>
 </aside>
