@@ -53,6 +53,29 @@ foreach ($terms as $key => $term):
 </ul>
 </div>
 
+<!-- others_flower -->
+<div class="inner">
+<h3><?php echo $others; ?></h3>
+<ul class="tag-list">
+<?php
+$args = [
+    'hide_empty' => false,
+];
+$terms = get_terms('other_flowers_cat', $args);
+foreach ($terms as $term):
+    $term_id = 'other_flowers_cat_'.icl_object_id($term->term_id, 'other_flowers_cat', false);
+    $best_month = (int)get_field('best_month', $term_id);
+    if ($best_month === 0 || $now_month !== $best_month) {
+        continue;
+    }
+    $flower_name = $term->name;
+    $flower_slug = get_term_link($term->slug, 'other_flowers_cat');
+?>
+<li class="mb-05"><a href="<?php echo $flower_slug; ?>"><?php echo $flower_name; ?></a></li>
+<?php endforeach; ?>
+</ul>
+</div>
+
 <!-- other_spot -->
 <div class="inner">
 <h3><?php echo $other_spots; ?></h3>
@@ -104,29 +127,6 @@ if (has_post_thumbnail()) {
 </a>
 </li>
 <?php endwhile; wp_reset_query(); ?>
-</ul>
-</div>
-
-<!-- others_flower -->
-<div class="inner">
-<h3><?php echo $others; ?></h3>
-<ul class="tag-list">
-<?php
-$args = [
-    'hide_empty' => false,
-];
-$terms = get_terms('other_flowers_cat', $args);
-foreach ($terms as $term):
-    $term_id = 'other_flowers_cat_'.icl_object_id($term->term_id, 'other_flowers_cat', false);
-    $best_month = (int)get_field('best_month', $term_id);
-    if ($best_month === 0 || $now_month !== $best_month) {
-        continue;
-    }
-    $flower_name = $term->name;
-    $flower_slug = get_term_link($term->slug, 'other_flowers_cat');
-?>
-<li class="mb-05"><a href="<?php echo $flower_slug; ?>"><?php echo $flower_name; ?></a></li>
-<?php endforeach; ?>
 </ul>
 </div>
 </aside>
