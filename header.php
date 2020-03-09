@@ -11,7 +11,7 @@ if ($lang === 'en') {
 } elseif ($lang === 'zh-hant') {
     $flowering = '開花信息';
 } else {
-    $flowering = '開花情報';
+    $flowering = '桜開花情報';
 }
 ?>
 <!DOCTYPE HTML>
@@ -70,14 +70,21 @@ $languages = icl_get_languages('skip_missing=0&orderby=id&order=desc&link_empty_
 </li>
 <?php
 $args = [
+    'slug' => 'area',
+    'hide_empty' => 0,
+];
+$parent = get_categories($args);
+$args = [
   'orderby' => 'ID',
   'order' => 'ASC',
   'hide_empty' => 0,
+  'exclude' => (String)icl_object_id($parent[0]->term_id, 'category', false),
+  'parent' => 0
 ];
 $categories = get_categories($args);
 foreach ($categories as $kye => $category) { ?>
 <li class="cat-link">
-<a class="drawer-menu-item" href="<?php echo get_category_link($category->term_id); ?>">
+<a class="drawer-menu-item" href="<?php echo get_category_link(icl_object_id($category->term_id, 'category', false)); ?>">
 <?php echo $category->name; ?>
 </a>
 </li>
@@ -95,7 +102,7 @@ foreach ($categories as $kye => $category) { ?>
 </nav>
 </div>
 </header>
-<div class="pc-only"><?php get_template_part('menu'); ?></div>
+<div class="pc-only"><?php get_template_part('templates/menu'); ?></div>
 <!-- ヘッダー終了 -->
 <?php
 if (!is_home() && !is_front_page()) {

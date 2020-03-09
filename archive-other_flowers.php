@@ -5,44 +5,42 @@ $wp_url = get_template_directory_uri();
 $lang = ICL_LANGUAGE_CODE;
 $lang_flag = false;
 if ($lang === 'en') {
-    $other_ttl = 'Seasonal other flowers';
+    $others = 'Seasonal other flowers';
+    $migoro_str = 'Best time';
 } elseif ($lang === 'ko') {
-    $other_ttl = '계절 다른 꽃';
+    $others = '계절 다른 꽃';
+    $migoro_str = '예년의 절정';
 } elseif ($lang === 'zh-hans') {
-    $other_ttl = '时令其他花';
+    $others = '时令他人花';
+    $migoro_str = '一年中最好的时间';
 } elseif ($lang === 'zh-hant') {
-    $other_ttl = '時令其他花';
+    $others = '時令他人花';
+    $migoro_str = '一年中最好的時間';
 } else {
-    $other_ttl = 'いま見頃の花';
     $lang_flag = true;
+    $others = 'いま見頃の花';
+    $migoro_str = '例年の見頃';
 }
 
-get_header(); ?>
+get_header();
+?>
 <section class="sec">
 <div class="wrap main-wrap">
 <section id="main-content">
-<?php $paged = get_query_var('paged') ? get_query_var('paged') : 1; ?>
-<h2 class="ttlcat"><?php echo $other_ttl; ?></h2>
+<h2 class="ttlcat"><?php echo $others; ?></h2>
 <ul class="post-list flowering-list">
 <?php
-$args = [
-  'posts_per_page' => get_option('posts_per_page'),
-  'paged' => $paged,
-  'orderby' => 'post_date',
-  'order' => 'DESC',
-  'post_type' => 'other_flowers',
-  'post_status' => 'publish',
-];
-$the_query = new WP_Query($args);
-if ($the_query->have_posts()): while ($the_query->have_posts()): $the_query->the_post();
+$paged = get_query_var('paged') ? get_query_var('paged') : 1;
+if (have_posts()): while (have_posts()): the_post();
 $p = get_the_permalink();
 $t = get_the_title();
+$time = get_the_time('Y-m-d');
 if (has_post_thumbnail()) {
-    $i = get_the_post_thumbnail_url(get_the_ID(), 'medium');
-    $i_l = get_the_post_thumbnail_url(get_the_ID(), 'large');
+    $i = get_the_post_thumbnail_url(get_the_ID(), 'large');
+    $i_l = get_the_post_thumbnail_url(get_the_ID(), 'full');
 } else {
     $i = $wp_url.'/lib/images/no-img.png';
-    $i_l = $wp_url.'/lib/images/no-img-2.png';
+    $i_l = $wp_url.'/lib/images/no-img.png';
 }
 $terms = get_the_terms(get_the_ID(), 'other_flowers_cat');
 $area_name = '';
@@ -71,16 +69,20 @@ foreach ($terms as $key => $term) {
 </div>
 </a>
 </li>
-<?php endwhile; endif; ?>
+<?php endwhile; ?>
+<?php else: ?>
+<li>
+<p class="mb-1">まだ記事が投稿されていません。</p>
+<p><a href="<?php echo $home; ?>" class="color-sky">他の記事を探す ></a></p>
+</li>
+<?php endif; ?>
 </ul>
 <?php if (function_exists('wp_pagenavi')) {
-    wp_pagenavi(array('query'=>$the_query));
-}
-wp_reset_query();
-?>
+    wp_pagenavi();
+} ?>
 </section>
 <!-- サイドバー -->
-<?php get_sidebar('others'); ?>
+<?php get_sidebar('flower'); ?>
 </div>
 </section>
 <?php get_footer();

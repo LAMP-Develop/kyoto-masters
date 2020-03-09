@@ -31,19 +31,22 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 if (have_posts()): while (have_posts()): the_post();
 $p = get_the_permalink();
 $t = get_the_title();
+$time = get_the_time('Y-m-d');
 if (has_post_thumbnail()) {
-    $i = get_the_post_thumbnail_url(get_the_ID(), 'medium');
-    $i_l = get_the_post_thumbnail_url(get_the_ID(), 'large');
+    $i = get_the_post_thumbnail_url(get_the_ID(), 'large');
+    $i_l = get_the_post_thumbnail_url(get_the_ID(), 'full');
 } else {
     $i = $wp_url.'/lib/images/no-img.png';
-    $i_l = $wp_url.'/lib/images/no-img-2.png';
+    $i_l = $wp_url.'/lib/images/no-img.png';
 }
 $terms = get_the_terms(get_the_ID(), 'other_flowers_cat');
 $area_name = '';
+$flower_name = '';
 foreach ($terms as $key => $term) {
     if ($term->parent) {
         $area_name = $term->name;
-        break;
+    } else {
+        $flower_name = $term->name;
     }
 }
 ?>
@@ -53,7 +56,7 @@ foreach ($terms as $key => $term) {
 <img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x,<?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
 </div>
 <div class="flower-info">
-<div class="flower"><span><?php echo $term_name; ?></span></div>
+<div class="flower"><span><?php echo $flower_name; ?></span></div>
 <div class="migoro">
 <span><i class="fas fa-map-marker-alt"></i> <?php echo $area_name; ?></span>
 </div>

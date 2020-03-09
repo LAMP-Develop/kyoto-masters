@@ -43,17 +43,6 @@ if (has_post_thumbnail()) {
     $i = $wp_url.'/lib/images/no-img.png';
     $i_l = $wp_url.'/lib/images/no-img.png';
 }
-if (get_field('migoro', get_the_ID())) {
-    $migoro = get_field('migoro', get_the_ID());
-} else {
-    $migoro = '';
-}
-if (get_field('flower_level', get_the_ID())) {
-    $flower_level = get_field('flower_level', get_the_ID());
-} else {
-    $flower_level = '';
-}
-
 $pictures = [];
 for ($j=1; $j <= 5; $j++) {
     if (get_field('picture_'.$j)) {
@@ -64,6 +53,7 @@ for ($j=1; $j <= 5; $j++) {
 <section class="sec">
 <div id="single-wrap" class="wrap main-wrap">
 <article id="main-content" class="post-main">
+
 <!-- 画像 -->
 <div class="slider-for">
 <img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x,<?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
@@ -78,11 +68,6 @@ for ($j=1; $j <= 5; $j++) {
 <?php endforeach; ?>
 </div>
 
-<h2 class="postttl"><?php echo $t; ?></h2>
-<div class="meta">
-<time class="color-sky" datetime="<?php echo $time; ?>"><?php echo $modified_time; ?>：<?php the_modified_time('Y.m.d'); ?></time>
-<span class="ml-05"><i class="fas fa-map-marker-alt"></i> <?php echo $term_name; ?></span>
-</div>
 <!-- 開花情報 -->
 <div class="post-flowering">
 <div class="flowering">
@@ -94,6 +79,12 @@ for ($j=1; $j <= 5; $j++) {
 <span><?php echo $migoro_str; ?></span>
 <span><?php echo $migoro; ?></span>
 </div>
+</div>
+
+<h2 class="postttl"><?php echo $t; ?></h2>
+<div class="meta">
+<time class="color-sky" datetime="<?php echo $time; ?>"><?php echo $modified_time; ?>：<?php the_modified_time('Y.m.d'); ?></time>
+<span class="ml-05"><i class="fas fa-map-marker-alt"></i> <?php echo $term_name; ?></span>
 </div>
 <!-- メインコンテンツ -->
 <div class="post-inner mb-3">

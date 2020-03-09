@@ -218,9 +218,9 @@ foreach ($terms as $key => $term) {
 </ul>
 <div class="txt-c">
 <?php if ($lang_flag): ?>
-<a href="<?php echo $home; ?>/otherflowers/" class="btn">もっと見る</a>
+<a href="<?php echo $home; ?>/other_flowers/" class="btn">もっと見る</a>
 <?php else: ?>
-<a href="<?php echo $home; ?>/otherflowers/" class="btn">More</a>
+<a href="<?php echo $home; ?>/other_flowers/" class="btn">More</a>
 <?php endif; ?>
 </div>
 </div>
