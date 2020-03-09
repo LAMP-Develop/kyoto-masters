@@ -82,7 +82,7 @@ foreach ($terms as $key => $term) {
 } ?>
 </section>
 <!-- サイドバー -->
-<?php get_sidebar('flower'); ?>
+<?php get_sidebar('others'); ?>
 </div>
 </section>
 <?php get_footer();

@@ -70,6 +70,7 @@ foreach ($terms as $val) {
   }
 }
 $terms_arr = implode(',', $terms_arr);
+var_dump($terms_arr);
 $args = [
     'post_type' => 'other_flowers',
     'taxonomy' => 'other_flowers_cat',
