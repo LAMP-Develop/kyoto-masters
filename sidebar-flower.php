@@ -68,4 +68,39 @@ foreach ($terms as $term):
 <?php endforeach; ?>
 </ul>
 </div>
+
+<!-- other_spot -->
+<div class="inner">
+<h3>その他の桜スポット</h3>
+<?php
+$args = [
+    'post_type' => 'flowering_info',
+    'posts_per_page' => 5,
+]; ?>
+<ul class="popular-posts">
+<?php query_posts($args);
+while (have_posts()): the_post();
+$ttl = get_the_title();
+$permalink = get_the_permalink();
+$img = '';
+if (has_post_thumbnail()) {
+    $img = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
+} else {
+    $img = $wp_url.'/lib/images/no-img.png';
+}
+?>
+<li>
+<a href="<?php echo $permalink; ?>">
+<div class="post-thumbnail">
+<img src="<?php echo $img; ?>" alt="<?php echo $ttl; ?>">
+</div>
+<div class="txt">
+<h4><?php echo $ttl; ?></h4>
+</div>
+</a>
+</li>
+<?php endwhile; wp_reset_query(); ?>
+</ul>
+</div>
+
 </aside>
