@@ -48,7 +48,9 @@ if (has_post_thumbnail()) {
 <li>
 <span class="mv-ribbon"><?php echo $type_name; ?></span>
 <a href="<?php echo $p; ?>">
+<div class="post-thumbnail">
 <img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x,<?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
+</div>
 <div class="txt">
 <h3 class="mb-0"><?php echo $t; ?></h3>
 </div>
