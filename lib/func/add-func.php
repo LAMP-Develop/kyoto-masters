@@ -106,11 +106,11 @@ function get_popular_args($range = "weekly", $limit = 5)
     $atts_3 = ' limit='. $limit;
     $shortcode .= ' ' . $atts . $atts_2 . $atts_3 . ']';
     $result = explode(",", strip_tags(do_shortcode($shortcode)));
-    $ranked_post_ids = array();
+    $ranked_post_ids = [];
     foreach ($result as $_url) {
         if (!empty($_url) && trim($_url) != '') {
             $id_string = url_to_postid($_url);
-            array_push($ranked_post_ids, intval($id_string));
+            $ranked_post_ids[] = (int)$id_string;
         }
     }
     $args = [
@@ -122,30 +122,28 @@ function get_popular_args($range = "weekly", $limit = 5)
     return $args;
 }
 
-function get_popular_blooming($range = "weekly", $limit = 5)
+function get_popular_blooming($range = "weekly", $limit = 5, $post_type = 'flowering_info')
 {
     $shortcode = '[wpp';
     $atts = '
           post_html="{url},"
-          wpp_start=""
-          wpp_end=""
           order_by="views"
-          post_type="flowering_info"
-          stats_comments=0
+          post_type="'.$post_type.'"
           stats_views=1';
     $atts_2 = ' range='. $range;
     $atts_3 = ' limit='. $limit;
     $shortcode .= ' ' . $atts . $atts_2 . $atts_3 . ']';
     $result = explode(",", strip_tags(do_shortcode($shortcode)));
-    $ranked_post_ids = array();
+    $ranked_post_ids = [];
     foreach ($result as $_url) {
         if (!empty($_url) && trim($_url) != '') {
             $id_string = url_to_postid($_url);
-            array_push($ranked_post_ids, intval($id_string));
+            $ranked_post_ids[] = (int)$id_string;
         }
     }
     $args = [
         'posts_per_page' => $limit,
+        'post_type' => 'flowering_info',
         'post__in' => $ranked_post_ids,
         'orderby' => 'post__in'
     ];

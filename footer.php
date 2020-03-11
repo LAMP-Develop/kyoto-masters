@@ -3,6 +3,10 @@ $home = esc_url(home_url());
 $wp_url = get_template_directory_uri(); ?>
 </main>
 <!-- メインコンテンツ終了 -->
+
+<!-- CTA -->
+<?php get_template_part('templates/cta-foot'); ?>
+
 <!-- フッター -->
 <footer id="footer" class="sec">
 <div class="wrap">
@@ -12,7 +16,7 @@ $wp_url = get_template_directory_uri(); ?>
 <li class="d-i-block"><a href="https://lamp.jp" target="_blank">Company</a></li>
 <li class="d-i-block"><a href="<?php echo $home; ?>/privacy-policy/">Privacy Policy</a></li>
 </ul>
-<p class="m-0 txt-c"><small>©2019 <a href="<?php echo $home; ?>"><?php bloginfo('name'); ?></a></small></p>
+<p class="m-0 txt-c"><small>©2017 <a href="<?php echo $home; ?>"><?php bloginfo('name'); ?></a></small></p>
 </div>
 </footer>
 <!-- フッター終了 -->

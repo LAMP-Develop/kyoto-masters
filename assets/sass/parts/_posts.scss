@@ -170,6 +170,10 @@
 
 .flowering-list {
   li {
+    @include media-md() {
+      width: 48% !important;
+    }
+
     .txt {
       h3 {
         text-align: center;

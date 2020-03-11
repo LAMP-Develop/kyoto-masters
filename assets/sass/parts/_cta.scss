@@ -90,3 +90,74 @@
     margin: 5px auto $font-size-base;
   }
 }
+
+.foot-cta {
+  position: relative;
+  padding: $font-size-base*2 0 0;
+  background-image: url("../images/bg_cta.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include media-md() {
+  }
+
+  .cta-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    @include media-md() {
+      flex-wrap: wrap;
+      flex-flow: column-reverse;
+    }
+
+    .img {
+      width: 40%;
+      text-align: center;
+      @include media-md() {
+        width: 100%;
+        margin-top: $font-size-base*2;
+      }
+
+      img {
+        vertical-align: bottom;
+      }
+    }
+
+    .txt {
+      width: 60%;
+      color: $white;
+      @include media-md() {
+        width: 100%;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: $font-size-base*1.75;
+        margin-bottom: $font-size-base*0.5;
+        text-shadow: 0 0 $font-size-base*0.5 $dark;
+      }
+
+      p {
+        font-size: $font-size-base;
+        margin-bottom: $font-size-base*2;
+        text-shadow: 0 0 $font-size-base*0.5 $dark;
+      }
+
+      .btns {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: nowrap;
+
+        a {
+          display: block;
+          margin: 0 $font-size-base;
+          @include media-md() {
+            margin: 0 $font-size-base*0.5;
+          }
+        }
+      }
+    }
+  }
+}
