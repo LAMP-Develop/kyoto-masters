@@ -1718,8 +1718,14 @@ footer img {
         background-color: #f5f5f5; }
 
 @media (max-width: 768px) {
+  .flowering-list {
+    justify-content: space-between !important; } }
+
+@media (max-width: 768px) {
   .flowering-list li {
-    width: 48% !important; } }
+    width: 48% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important; } }
 
 .flowering-list li .txt h3 {
   text-align: center;
@@ -1731,7 +1737,8 @@ footer img {
   z-index: 1;
   display: flex;
   justify-content: flex-start;
-  align-items: stretch; }
+  align-items: stretch;
+  flex-wrap: wrap; }
   .flower-info .flower {
     background-color: #FFF0F0;
     width: 50%;
@@ -1740,6 +1747,9 @@ footer img {
     align-items: center;
     box-sizing: border-box;
     padding: 0.5rem; }
+    @media (max-width: 768px) {
+      .flower-info .flower {
+        width: 100%; } }
     .flower-info .flower span {
       font-size: 0.8rem; }
       .flower-info .flower span img {
@@ -1756,6 +1766,9 @@ footer img {
     box-sizing: border-box;
     padding: 0.5rem;
     text-align: center; }
+    @media (max-width: 768px) {
+      .flower-info .migoro {
+        width: 100%; } }
 
 #relation-post .flower-info {
   display: block; }

@@ -169,9 +169,15 @@
 }
 
 .flowering-list {
+  @include media-md() {
+    justify-content: space-between !important;
+  }
+
   li {
     @include media-md() {
       width: 48% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
     }
 
     .txt {
@@ -190,6 +196,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
+  flex-wrap: wrap;
 
   .flower {
     background-color: $pink;
@@ -199,6 +206,9 @@
     align-items: center;
     box-sizing: border-box;
     padding: $font-size-base*0.5;
+    @include media-md() {
+      width: 100%;
+    }
 
     span {
       font-size: $font-size-base*0.8;
@@ -221,6 +231,9 @@
     box-sizing: border-box;
     padding: $font-size-base*0.5;
     text-align: center;
+    @include media-md() {
+      width: 100%;
+    }
   }
 }
 
