@@ -188,9 +188,10 @@ $other_terms = get_terms('other_flowers_cat', $args);
 if (count($other_terms) !== 0):
 foreach ($other_terms as $key => $term):
 $term_id = 'other_flowers_cat_'.icl_object_id($term->term_id, 'other_flowers_cat', false);
+$best_month = [];
 $best_month = get_field('best_month', $term_id);
 $month_arr = [$now_month];
-if (count(array_intersect($best_month, $month_arr)) === 0) {
+if (count($best_month) === 0 || count(array_intersect($best_month, $month_arr)) === 0) {
     continue;
 }
 $term_url = get_term_link($term->term_id, 'other_flowers_cat');
