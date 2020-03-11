@@ -106,7 +106,7 @@ if (get_field('flower_level', get_the_ID())) {
 </div>
 </section>
 
-<section id="ranking" class="sec">
+<section id="ranking" class="sec bg-gray-a">
 <div class="wrap">
 <?php if ($lang_flag): ?>
 <h2 class="ttl2 txt-c"><span class="color-sky d-block">人気のスポット</span><span>RANKING</span></h2>
@@ -172,7 +172,7 @@ if (get_field('flower_level', get_the_ID())) {
 </div>
 </section>
 
-<section id="other-flowers" class="sec">
+<section id="other-flowers" class="sec bg-gray-a">
 <div class="wrap">
 <?php if ($lang_flag): ?>
 <h2 class="ttl2 txt-c"><span class="color-sky d-block">いま見頃の花</span><span>SEASONAL OTHER FLOWERS</span></h2>
