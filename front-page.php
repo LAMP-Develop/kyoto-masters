@@ -166,6 +166,12 @@ if (get_field('flower_level', get_the_ID())) {
 </div>
 </section>
 
+<section id="sort-area" class="sec">
+<div class="wrap">
+<h2 class="ttl2 txt-c"><span class="color-sky d-block">エリアで絞る</span><span>SORT AREA</span></h2>
+</div>
+</section>
+
 <section id="other-flowers" class="sec">
 <div class="wrap">
 <?php if ($lang_flag): ?>
