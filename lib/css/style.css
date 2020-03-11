@@ -1732,6 +1732,9 @@ footer img {
   font-weight: bold;
   margin: 0;
   font-size: 1.5rem; }
+  @media (max-width: 768px) {
+    .flowering-list li .txt h3 {
+      font-size: 1rem; } }
 
 .flower-info {
   z-index: 1;

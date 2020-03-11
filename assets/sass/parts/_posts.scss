@@ -186,6 +186,9 @@
         font-weight: bold;
         margin: 0;
         font-size: $font-size-lg;
+        @include media-md() {
+          font-size: $font-size-base;
+        }
       }
     }
   }
