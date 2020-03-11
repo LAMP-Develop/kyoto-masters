@@ -220,6 +220,10 @@
         width: $font-size-base*2;
         height: auto;
         margin-right: $font-size-base*0.5;
+        @include media-md() {
+          width: $font-size-base*1.4;
+          margin-right: $font-size-base*0.3;
+        }
       }
     }
   }

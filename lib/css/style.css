@@ -1759,6 +1759,10 @@ footer img {
         width: 2rem;
         height: auto;
         margin-right: 0.5rem; }
+        @media (max-width: 768px) {
+          .flower-info .flower span img {
+            width: 1.4rem;
+            margin-right: 0.3rem; } }
   .flower-info .migoro {
     display: flex;
     justify-content: center;
