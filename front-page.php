@@ -19,7 +19,7 @@ if ($lang === 'en') {
     $migoro_str = '一年中最好的時間';
 } else {
     $lang_flag = true;
-    $ttl = '京都の”今”を世界に届けるメディア';
+    $ttl = '京都の”今”を<br class="sp-only">世界に届けるメディア';
     $migoro_str = '例年の見頃';
 }
 get_header(); ?>
