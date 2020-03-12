@@ -99,19 +99,17 @@
   }
 
   &.ranking-list {
+    justify-content: center;
+
     li {
       overflow: hidden;
       position: relative;
-      width: 22.5%;
-      margin-left: 0;
-      margin-right: 2.5%;
+      width: 23%;
+      margin-left: 1%;
+      margin-right: 1%;
       @include media-sm() {
         width: 100%;
         margin: 0 auto $font-size-base*2;
-      }
-
-      &:last-child {
-        margin-right: 0;
       }
 
       > span {
@@ -183,9 +181,8 @@
     .txt {
       h3 {
         text-align: center;
-        font-weight: bold;
         margin: 0;
-        font-size: $font-size-lg;
+        font-size: $font-size-base*1.4;
         @include media-md() {
           font-size: $font-size-base;
         }
