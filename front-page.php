@@ -199,6 +199,7 @@ foreach ($terms as $term):
 <?php else: ?>
 <h2 class="ttl2 txt-c"><span class="color-sky d-block">SEASONAL OTHER FLOWERS</span></h2>
 <?php endif; ?>
+<ul class="post-list ranking-list flowering-list">
 <?php
 $args = [
     'slug' => 'area',
@@ -221,8 +222,20 @@ if (count($best_month) === 0 || count(array_intersect($best_month, $month_arr)) 
 }
 $term_url = get_term_link($term->term_id, 'other_flowers_cat');
 $term_name = $term->name;
+$pic = get_field('other_flower_cat_pic', $term_id);
 ?>
+<li class="mb-2">
+<a class="relative" href="<?php echo $term_url; ?>">
+<div class="post-thumbnail">
+<img src="<?php echo $pic['sizes']['medium']; ?>" alt="<?php echo $term_name; ?>">
+</div>
+<div class="txt">
+<h3 class="mincho"><?php echo $term_name; ?></h3>
+</div>
+</a>
+</li>
 <?php endforeach; endif; ?>
+</ul>
 </div>
 </section>
 
