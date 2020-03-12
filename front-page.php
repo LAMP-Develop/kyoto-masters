@@ -168,7 +168,27 @@ if (get_field('flower_level', get_the_ID())) {
 
 <section id="sort-area" class="sec">
 <div class="wrap">
-<h2 class="ttl2 txt-c"><span class="color-sky d-block">エリアで絞る</span><span>SORT AREA</span></h2>
+<h2 class="ttl2 txt-c"><span class="color-sky d-block">エリアから探す</span><span>SEARCH BY AREA</span></h2>
+<ul class="tag-list">
+<?php
+$args = [
+    'slug' => 'area',
+    'hide_empty' => 0,
+];
+$parent = get_terms('flowering_info_cat', $args);
+$args = [
+    'orderby' => 'name',
+    'orderby' => 'ASC',
+    'parent' => icl_object_id($parent[0]->term_id, 'flowering_info_cat', false)
+];
+$terms = get_terms('flowering_info_cat', $args);
+foreach ($terms as $term):
+  $area_name = $term->name;
+  $area_slug = get_term_link($term->slug, 'flowering_info_cat');
+?>
+<li class="mb-05"><a href="<?php echo $area_slug; ?>"><i class="fas fa-map-marker-alt mr-05"></i><?php echo $area_name; ?></a></li>
+<?php endforeach; ?>
+</ul>
 </div>
 </section>
 
