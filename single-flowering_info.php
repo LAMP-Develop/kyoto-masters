@@ -57,7 +57,12 @@ if (get_field('flower_level', get_the_ID())) {
 $pictures = [];
 for ($j=1; $j <= 5; $j++) {
     if (get_field('picture_'.$j)) {
-        $pictures[] = get_field('picture_'.$j);
+        $arr = get_field('picture_'.$j);
+        $pictures[] = [
+            'url' => $arr['url'],
+            'caption' => $arr['caption'],
+            'thumbnail' => $arr['sizes']['medium']
+        ];
     }
 }
 ?>
@@ -66,15 +71,18 @@ for ($j=1; $j <= 5; $j++) {
 <article id="main-content" class="post-main">
 <!-- 画像 -->
 <div class="slider-for">
-<img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x,<?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
 <?php foreach ($pictures as $key => $pic): ?>
-<img src="<?php echo $pic; ?>" alt="<?php echo $t; ?>の桜">
+<div>
+<img src="<?php echo $pic['url']; ?>" alt="<?php echo $t; ?>の桜">
+<?php if ($pic['caption'] !== ''): ?>
+<p class="caption"><?php echo $pic['caption'] ?></p>
+<?php endif; ?>
+</div>
 <?php endforeach; ?>
 </div>
 <div class="slider-nav">
-<img src="<?php echo $i; ?>" alt="<?php echo $t; ?>">
 <?php foreach ($pictures as $key => $pic): ?>
-<img src="<?php echo $pic; ?>" alt="<?php echo $t; ?>の桜">
+<img src="<?php echo $pic['thumbnail']; ?>" alt="<?php echo $t; ?>の桜">
 <?php endforeach; ?>
 </div>
 
@@ -103,43 +111,43 @@ for ($j=1; $j <= 5; $j++) {
 <!-- 施設概要 -->
 <table>
 <tbody>
-<?php if(get_field('build-name')): ?>
+<?php if (get_field('build-name')): ?>
 <tr><th><?php echo get_field_object('build-name')['label']; ?></th>
 <td><?php the_field('build-name'); ?></td></tr>
 <?php endif; ?>
-<?php if(get_field('address')): ?>
+<?php if (get_field('address')): ?>
 <tr><th><?php echo get_field_object('address')['label']; ?></th>
 <td><?php the_field('address'); ?></td></tr>
 <?php endif; ?>
-<?php if(get_field('tell')): ?>
+<?php if (get_field('tell')): ?>
 <tr><th><?php echo get_field_object('tell')['label']; ?></th>
 <td><a href="tel:<?php the_field('tell'); ?>"><?php the_field('tell'); ?></a></td></tr>
 <?php endif; ?>
-<?php if(get_field('station')): ?>
+<?php if (get_field('station')): ?>
 <tr><th><?php echo get_field_object('station')['label']; ?></th>
 <td><?php the_field('station'); ?></td></tr>
 <?php endif; ?>
-<?php if(get_field('url')): ?>
+<?php if (get_field('url')): ?>
 <tr><th><?php echo get_field_object('url')['label']; ?></th>
 <td><a href="<?php the_field('url'); ?>" target="_blank"><?php the_field('url'); ?></a></td></tr>
 <?php endif; ?>
-<?php if(get_field('bas')): ?>
+<?php if (get_field('bas')): ?>
 <tr><th><?php echo get_field_object('bas')['label']; ?></th>
 <td><?php the_field('bas'); ?></td></tr>
 <?php endif; ?>
-<?php if(get_field('time')): ?>
+<?php if (get_field('time')): ?>
 <tr><th><?php echo get_field_object('time')['label']; ?></th>
 <td><?php the_field('time'); ?></td></tr>
 <?php endif; ?>
-<?php if(get_field('holiday')): ?>
+<?php if (get_field('holiday')): ?>
 <tr><th><?php echo get_field_object('holiday')['label']; ?></th>
 <td><?php the_field('holiday'); ?></td></tr>
 <?php endif; ?>
-<?php if(get_field('money')): ?>
+<?php if (get_field('money')): ?>
 <tr><th><?php echo get_field_object('money')['label']; ?></th>
 <td><?php the_field('money'); ?></td></tr>
 <?php endif; ?>
-<?php if(get_field('other')): ?>
+<?php if (get_field('other')): ?>
 <tr><th><?php echo get_field_object('other')['label']; ?></th>
 <td><?php the_field('other'); ?></td></tr>
 <?php endif; ?>

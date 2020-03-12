@@ -56,7 +56,7 @@ foreach ($terms as $key => $term) {
 <img src="<?php echo $i; ?>" srcset="<?php echo $i; ?> 1x,<?php echo $i_l; ?> 2x" alt="<?php echo $t; ?>">
 </div>
 <div class="flower-info">
-<div class="flower"><span><?php echo $flower_name; ?></span></div>
+<div class="flower"><span><?php echo $term_name; ?></span></div>
 <div class="migoro">
 <span><i class="fas fa-map-marker-alt"></i> <?php echo $area_name; ?></span>
 </div>

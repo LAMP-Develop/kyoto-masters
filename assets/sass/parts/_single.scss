@@ -282,6 +282,37 @@
   margin: 0;
 }
 
+.slider-for {
+  font-size: 0;
+
+  .slick-slide {
+    position: relative;
+
+    .caption {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 2;
+      width: 100%;
+      box-sizing: border-box;
+      padding: $font-size-base;
+      background: rgba($body, .6);
+      color: $white;
+      font-size: $font-size-base*0.875;
+      opacity: 0;
+      transition: 0.3s ease;
+      line-height: 1;
+    }
+  }
+
+  .slick-current {
+    .caption {
+      opacity: 1;
+      transition-delay: 0.5s;
+    }
+  }
+}
+
 .slider-nav {
   margin-bottom: $font-size-base*2;
 }

@@ -169,7 +169,7 @@ if (get_field('flower_level', get_the_ID())) {
 <section id="sort-area" class="sec">
 <div class="wrap">
 <h2 class="ttl2 txt-c"><span class="color-sky d-block">エリアから探す</span><span>SEARCH BY AREA</span></h2>
-<ul class="tag-list">
+<ul class="tag-list txt-c">
 <?php
 $args = [
     'slug' => 'area',

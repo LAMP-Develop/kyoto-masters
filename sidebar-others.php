@@ -106,7 +106,7 @@ if (has_post_thumbnail()) {
 </div>
 
 <!-- sort -->
-<div class="inner">
+<!-- <div class="inner">
 <h3><?php echo $area; ?></h3>
 <ul class="side-cat">
 <?php
@@ -128,5 +128,5 @@ foreach ($terms as $key => $term):
 <li><a href="<?php echo $flower_slug; ?>"><?php echo $flower_name; ?></a></li>
 <?php endforeach; ?>
 </ul>
-</div>
+</div> -->
 </aside>
